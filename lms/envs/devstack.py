@@ -6,7 +6,9 @@ from .aws import *  # pylint: disable=wildcard-import, unused-wildcard-import
 
 # Don't use S3 in devstack, fall back to filesystem
 del DEFAULT_FILE_STORAGE
-MEDIA_ROOT = "/edx/var/edxapp/uploads"
+MEDIA_ROOT = "/edx/var/edxapp/data/uploads"
+MEDIA_URL = "/media/uploads/"
+FILE_UPLOAD_PERMISSIONS = 0644
 
 
 DEBUG = True

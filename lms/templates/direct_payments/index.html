@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Charge form</title>
+</head>
+<body>
+    <%!
+from django.core.urlresolvers import reverse
+%>
+
+<form action="${reverse('new_charge')}" method="POST" enctype="multipart/form-data" id="new">
+  <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+   <input type="number" step="any" min="0" name="amount" placeholder="amount"/>
+    
+   <input type="file" name="attachment" palceholder="attachment" required />
+   <textarea name="user_notes" id="" cols="30" rows="10" placeholder="Your notes"></textarea>
+   <input type="submit" value="Doooooo">
+</form>
+
+<form action="${reverse('remove_charge_entry')}" method="post" id="remove">
+   <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+    <input type="number" name="charge" id="">
+    <input type="submit" value="remove">
+</form>
+
+<form action="${reverse('update_charge_amount')}" method="post" id="change">
+   <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+   <input type="number" name="charge" id="" placeholder="charge">
+    <input type="number" name="new_amount" id="">
+    <input type="submit" value="update">
+</form>
+
+<form action="${reverse('update_charge_status')}" method="post" id="status">
+   <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+   <input type="number" name="charge" id="" placeholder="charge">
+    <select name="status" id="">
+        <option value="pending">pending</option>
+        <option value="rejected">rejected</option>
+        <option value="approved">approved</option>
+        <option value="canceled">canceled</option>
+        <option value="lll">ldsad</option>
+
+    </select>
+    <input type="submit" value="update">
+</form>
+
+
+<ul>
+   % for charge in charges:
+    <li>
+    <p>id: ${charge.id}</p>    
+    <p>id: ${charge.is_shown}</p>    
+    <p>id: ${charge.status}</p>
+
+    <p>amount: ${charge.amount}</p>
+    <p>attachment: <img src="${charge.attachment.url}" alt="${charge.attachment.name}"></p>
+    <p>number of comments: ${charge.comments.count()}</p>
+    <ul>
+       % for comment in charge.comments.all():
+        <li>${comment.content}</li>
+       % endfor
+    </ul>
+    <form action="${reverse('add_charge_comment')}" method="post">
+       <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+       <input type="hidden" name="charge" value="${charge.id}">
+        <textarea name="content" id="" cols="50" rows="10"></textarea>
+        <input type="submit" value="comment">
+    </form>
+    </li>
+   % endfor
+</ul>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(function(){
+    $('#remove').on('submit', function(){
+    });
+});        
+</script>
+</body>
+</html>

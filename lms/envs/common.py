@@ -1516,6 +1516,9 @@ INSTALLED_APPS = (
     'survey',
 
     'lms.djangoapps.lms_xblock',
+    
+    # Daress specific 
+    'direct_payments',
 )
 
 ######################### MARKETING SITE ###############################

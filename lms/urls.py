@@ -459,6 +459,11 @@ urlpatterns += (
     url(r'^shoppingcart/', include('shoppingcart.urls')),
 )
 
+# Direct Payments
+urlpatterns += (
+    url(r'^direct_payments/', include('direct_payments.urls')),
+)
+
 # Survey Djangoapp
 urlpatterns += (
     url(r'^survey/', include('survey.urls')),
@@ -549,6 +554,7 @@ urlpatterns = patterns(*urlpatterns)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
     # in debug mode, allow any template to be rendered (most useful for UX reference templates)
     urlpatterns += url(r'^template/(?P<template>.+)$', 'debug.views.show_reference_template'),
