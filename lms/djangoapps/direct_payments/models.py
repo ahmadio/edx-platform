@@ -100,4 +100,4 @@ class UserBalance(models.Model):
     user = models.ForeignKey(User, related_name='balance', unique=True)
     current_balance = models.DecimalField(default=0.0, decimal_places=2, max_digits=30)
     created_at = models.DateTimeField(auto_now_add=True)
-    modified_at = models.DateTiemField(auto_now=True)
+    modified_at = models.DateTimeField(auto_now=True)
