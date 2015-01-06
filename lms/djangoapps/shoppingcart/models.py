@@ -56,6 +56,9 @@ from microsite_configuration import microsite
 log = logging.getLogger("shoppingcart")
 
 ORDER_STATUSES = (
+    # Onhold status for order or order items that is waiting payment
+    ('onhold', 'onhold'),
+    
     # The user is selecting what he/she wants to purchase.
     ('cart', 'cart'),
 
@@ -148,6 +151,7 @@ class Order(models.Model):
         except ObjectDoesNotExist:
             # if nothing exists in the database, create a new cart
             cart_order, _created = cls.objects.get_or_create(user=user, status='cart')
+
         return cart_order
 
     @classmethod
@@ -242,6 +246,20 @@ class Order(models.Model):
 
             for item in OrderItem.objects.filter(order=self).select_subclasses():
                 item.start_purchase()
+
+    @transaction.commit_on_success
+    def put_on_hold(self):
+        """
+        update order and its items status to "onhold" and wait for payments to purchase
+
+        Future calls to `Order.get_cart_for_user()` will filter out orders with
+        status "onhold", effectively creating a new (empty) cart.
+        """
+        self.status = 'onhold'
+        self.save()
+
+        for item in OrderItem.objects.filter(order=self).select_subclasses():
+            item.put_on_hold()
 
     def update_order_type(self):
         """
@@ -544,6 +562,9 @@ class Order(models.Model):
 
         for item in self.orderitem_set.all():  # pylint: disable=no-member
             item.retire()
+            
+    def __unicode__(self):
+        return "{} order {} with {} items, user {}".format(self.status, self.id, len(self.orderitem_set.all()), self.user)
 
 
 class OrderItem(TimeStampedModel):

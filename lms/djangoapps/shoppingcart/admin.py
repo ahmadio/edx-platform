@@ -3,7 +3,7 @@ Allows django admin site to add PaidCourseRegistrationAnnotations
 """
 from ratelimitbackend import admin
 from shoppingcart.models import (
-    PaidCourseRegistrationAnnotation, Coupon, DonationConfiguration
+    PaidCourseRegistrationAnnotation, Coupon, DonationConfiguration, Order, PaidCourseRegistration
 )
 
 
@@ -52,3 +52,7 @@ class SoftDeleteCouponAdmin(admin.ModelAdmin):
 admin.site.register(PaidCourseRegistrationAnnotation)
 admin.site.register(Coupon, SoftDeleteCouponAdmin)
 admin.site.register(DonationConfiguration)
+admin.site.register(PaidCourseRegistration)
+admin.site.register(Order)
+
+

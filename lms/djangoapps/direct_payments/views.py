@@ -1,7 +1,8 @@
 """
 View endpoints for direct payments
 """
-
+from datetime import datetime
+import pytz
 from django.conf import settings
 from django.contrib.auth.models import Group
 from django.http import (
@@ -12,10 +13,12 @@ from util.json_request import JsonResponse, expect_json
 from django.views.decorators.http import require_POST, require_http_methods
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from edxmako.shortcuts import render_to_response
+from shoppingcart.models import Order, OrderItem
 
-from .models import Charge
+from .models import Charge, UserBalance
 
 @login_required
 def index(request):
@@ -139,4 +142,54 @@ def add_charge_comment(request):
             return JsonResponse({'msg':'Missig paramaters'}, status=400)
         
     return JsonResponse({'msg':'Bad Request'}, status=400)
+
+@require_POST
+@login_required
+def direct_purchase_order(request):
+    """
+    complete payment order
+    """
+    order_id = request.POST.get('reference_number', None)
+    try:
+        order = Order.objects.get(id=order_id)
+
+    except DoesNotExist:
+        return JsonResponse({'msg':'Wrong order'}, status=404)
     
+    balance = UserBalance.get_user_balance(request.user)
+    order_total_cost = order.total_cost
+    
+    if balance.current_balance == 0:
+        order.put_on_hold()
+        # redirect to add charges page
+        return JsonResponse({'msg':'No balance, all onhold'}, status=200)
+    elif balance.current_balance >= order_total_cost:
+        order.purchase()
+        balance.deduct_amount(order_total_cost)
+        
+        # redirect to show receipt
+        return redirect(reverse('shoppingcart.views.show_receipt', args=[order.id]))
+    else:
+        items = OrderItem.objects.filter(order=order).select_subclasses('onholdpaidregistration')
+        for item in items:
+            if not item.status == 'purchased':
+                if balance.current_balance >= item.line_cost:
+                    item.purchase_item()
+                    balance.deduct_amount(item.line_cost)
+                else:
+                    item.put_on_hold()
+                    
+        if OrderItem.objects.filter(order=order, status='onhold').select_subclasses('onholdpaidregistration').exists():
+            order.status = 'onhold'
+            order.save()
+            # TODO: redirect to some descriptive message
+            return JsonResponse({'msg':'Order still has onhold registration/s'}, status=200)
+        else:
+            order.status = 'purchased'
+            order.purchase_time = datetime.now(pytz.utc)
+            order.save()
+            return JsonResponse({'msg':'Order purchased'}, status=200)
+        
+        return redirect(reverse('dashboard'))                                           
+    
+    return JsonResponse({'msg':'Bad Request'}, status=400)

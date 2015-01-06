@@ -24,10 +24,67 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal('direct_payments', ['Charge'])
 
+        # Adding model 'Deposit'
+        db.create_table('direct_payments_deposit', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(related_name='deposits', to=orm['auth.User'])),
+            ('charge', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['direct_payments.Charge'])),
+            ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('approved_by', self.gf('django.db.models.fields.related.ForeignKey')(related_name='approved_deposits', to=orm['auth.User'])),
+        ))
+        db.send_create_signal('direct_payments', ['Deposit'])
+
+        # Adding unique constraint on 'Deposit', fields ['user', 'charge']
+        db.create_unique('direct_payments_deposit', ['user_id', 'charge_id'])
+
+        # Adding model 'Comment'
+        db.create_table('direct_payments_comment', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(related_name='charge_comments', to=orm['auth.User'])),
+            ('charge', self.gf('django.db.models.fields.related.ForeignKey')(related_name='comments', to=orm['direct_payments.Charge'])),
+            ('content', self.gf('django.db.models.fields.TextField')(default='empty comment')),
+            ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+        ))
+        db.send_create_signal('direct_payments', ['Comment'])
+
+        # Adding model 'UserBalance'
+        db.create_table('direct_payments_userbalance', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(related_name='balance', unique=True, to=orm['auth.User'])),
+            ('current_balance', self.gf('django.db.models.fields.DecimalField')(default=0, max_digits=30, decimal_places=2)),
+            ('created_at', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
+            ('modified_at', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
+            ('history', self.gf('django.db.models.fields.TextField')(default='{}')),
+        ))
+        db.send_create_signal('direct_payments', ['UserBalance'])
+
+        # Adding model 'OnHoldPaidRegistration'
+        db.create_table('direct_payments_onholdpaidregistration', (
+            ('orderitem_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['shoppingcart.OrderItem'], unique=True, primary_key=True)),
+            ('course_id', self.gf('xmodule_django.models.CourseKeyField')(max_length=128, db_index=True)),
+            ('mode', self.gf('django.db.models.fields.SlugField')(default='honor', max_length=50)),
+        ))
+        db.send_create_signal('direct_payments', ['OnHoldPaidRegistration'])
+
 
     def backwards(self, orm):
+        # Removing unique constraint on 'Deposit', fields ['user', 'charge']
+        db.delete_unique('direct_payments_deposit', ['user_id', 'charge_id'])
+
         # Deleting model 'Charge'
         db.delete_table('direct_payments_charge')
+
+        # Deleting model 'Deposit'
+        db.delete_table('direct_payments_deposit')
+
+        # Deleting model 'Comment'
+        db.delete_table('direct_payments_comment')
+
+        # Deleting model 'UserBalance'
+        db.delete_table('direct_payments_userbalance')
+
+        # Deleting model 'OnHoldPaidRegistration'
+        db.delete_table('direct_payments_onholdpaidregistration')
 
 
     models = {
@@ -80,6 +137,82 @@ class Migration(SchemaMigration):
             'status': ('django.db.models.fields.CharField', [], {'default': "'pending'", 'max_length': '32'}),
             'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'charges'", 'to': "orm['auth.User']"}),
             'user_notes': ('django.db.models.fields.TextField', [], {'default': '"User didn\'t provide notes"'})
+        },
+        'direct_payments.comment': {
+            'Meta': {'object_name': 'Comment'},
+            'charge': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'comments'", 'to': "orm['direct_payments.Charge']"}),
+            'content': ('django.db.models.fields.TextField', [], {'default': "'empty comment'"}),
+            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'charge_comments'", 'to': "orm['auth.User']"})
+        },
+        'direct_payments.deposit': {
+            'Meta': {'unique_together': "(('user', 'charge'),)", 'object_name': 'Deposit'},
+            'approved_by': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'approved_deposits'", 'to': "orm['auth.User']"}),
+            'charge': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['direct_payments.Charge']"}),
+            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'deposits'", 'to': "orm['auth.User']"})
+        },
+        'direct_payments.onholdpaidregistration': {
+            'Meta': {'object_name': 'OnHoldPaidRegistration', '_ormbases': ['shoppingcart.OrderItem']},
+            'course_id': ('xmodule_django.models.CourseKeyField', [], {'max_length': '128', 'db_index': 'True'}),
+            'mode': ('django.db.models.fields.SlugField', [], {'default': "'honor'", 'max_length': '50'}),
+            'orderitem_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['shoppingcart.OrderItem']", 'unique': 'True', 'primary_key': 'True'})
+        },
+        'direct_payments.userbalance': {
+            'Meta': {'object_name': 'UserBalance'},
+            'created_at': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
+            'current_balance': ('django.db.models.fields.DecimalField', [], {'default': '0', 'max_digits': '30', 'decimal_places': '2'}),
+            'history': ('django.db.models.fields.TextField', [], {'default': "'{}'"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'modified_at': ('django.db.models.fields.DateTimeField', [], {'auto_now': 'True', 'blank': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'balance'", 'unique': 'True', 'to': "orm['auth.User']"})
+        },
+        'shoppingcart.order': {
+            'Meta': {'object_name': 'Order'},
+            'bill_to_cardtype': ('django.db.models.fields.CharField', [], {'max_length': '32', 'blank': 'True'}),
+            'bill_to_ccnum': ('django.db.models.fields.CharField', [], {'max_length': '8', 'blank': 'True'}),
+            'bill_to_city': ('django.db.models.fields.CharField', [], {'max_length': '64', 'blank': 'True'}),
+            'bill_to_country': ('django.db.models.fields.CharField', [], {'max_length': '64', 'blank': 'True'}),
+            'bill_to_first': ('django.db.models.fields.CharField', [], {'max_length': '64', 'blank': 'True'}),
+            'bill_to_last': ('django.db.models.fields.CharField', [], {'max_length': '64', 'blank': 'True'}),
+            'bill_to_postalcode': ('django.db.models.fields.CharField', [], {'max_length': '16', 'blank': 'True'}),
+            'bill_to_state': ('django.db.models.fields.CharField', [], {'max_length': '8', 'blank': 'True'}),
+            'bill_to_street1': ('django.db.models.fields.CharField', [], {'max_length': '128', 'blank': 'True'}),
+            'bill_to_street2': ('django.db.models.fields.CharField', [], {'max_length': '128', 'blank': 'True'}),
+            'company_contact_email': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'company_contact_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'company_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'currency': ('django.db.models.fields.CharField', [], {'default': "'usd'", 'max_length': '8'}),
+            'customer_reference_number': ('django.db.models.fields.CharField', [], {'max_length': '63', 'null': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'order_type': ('django.db.models.fields.CharField', [], {'default': "'personal'", 'max_length': '32'}),
+            'processor_reply_dump': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
+            'purchase_time': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'recipient_email': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'recipient_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'refunded_time': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'status': ('django.db.models.fields.CharField', [], {'default': "'cart'", 'max_length': '32'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+        },
+        'shoppingcart.orderitem': {
+            'Meta': {'object_name': 'OrderItem'},
+            'created': ('model_utils.fields.AutoCreatedField', [], {'default': 'datetime.datetime.now'}),
+            'currency': ('django.db.models.fields.CharField', [], {'default': "'usd'", 'max_length': '8'}),
+            'fulfilled_time': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'db_index': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'line_desc': ('django.db.models.fields.CharField', [], {'default': "'Misc. Item'", 'max_length': '1024'}),
+            'list_price': ('django.db.models.fields.DecimalField', [], {'null': 'True', 'max_digits': '30', 'decimal_places': '2'}),
+            'modified': ('model_utils.fields.AutoLastModifiedField', [], {'default': 'datetime.datetime.now'}),
+            'order': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['shoppingcart.Order']"}),
+            'qty': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
+            'refund_requested_time': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'db_index': 'True'}),
+            'report_comments': ('django.db.models.fields.TextField', [], {'default': "''"}),
+            'service_fee': ('django.db.models.fields.DecimalField', [], {'default': '0.0', 'max_digits': '30', 'decimal_places': '2'}),
+            'status': ('django.db.models.fields.CharField', [], {'default': "'cart'", 'max_length': '32', 'db_index': 'True'}),
+            'unit_cost': ('django.db.models.fields.DecimalField', [], {'default': '0.0', 'max_digits': '30', 'decimal_places': '2'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
         }
     }
 

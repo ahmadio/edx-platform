@@ -55,6 +55,7 @@ from xmodule.x_module import STUDENT_VIEW
 import shoppingcart
 from shoppingcart.models import CourseRegistrationCode
 from shoppingcart.utils import is_shopping_cart_enabled
+import direct_payments
 from opaque_keys import InvalidKeyError
 
 from microsite_configuration import microsite
@@ -765,17 +766,21 @@ def course_about(request, course_id):
     # Note: this is a flow for payment for course registration, not the Verified Certificate flow.
     registration_price = 0
     in_cart = False
+    on_hold = False
     reg_then_add_to_cart_link = ""
 
     _is_shopping_cart_enabled = is_shopping_cart_enabled()
+    ##################### check if direct payment enabled
     if (_is_shopping_cart_enabled):
         registration_price = CourseMode.min_course_price_for_currency(course_key,
                                                                       settings.PAID_COURSE_REGISTRATION_CURRENCY[0])
         if request.user.is_authenticated():
             cart = shoppingcart.models.Order.get_cart_for_user(request.user)
             in_cart = shoppingcart.models.PaidCourseRegistration.contained_in_order(cart, course_key) or \
-                shoppingcart.models.CourseRegCodeItem.contained_in_order(cart, course_key)
-
+                shoppingcart.models.CourseRegCodeItem.contained_in_order(cart, course_key) or \
+                direct_payments.models.OnHoldPaidRegistration.contained_in_order(cart, course_key)
+            on_hold = direct_payments.models.OnHoldPaidRegistration.is_on_hold(request.user, course_key)
+            
         reg_then_add_to_cart_link = "{reg_url}?course_id={course_id}&enrollment_action=add_to_cart".format(
             reg_url=reverse('register_user'), course_id=course.id.to_deprecated_string())
 
@@ -800,6 +805,7 @@ def course_about(request, course_id):
         'course_target': course_target,
         'registration_price': registration_price,
         'in_cart': in_cart,
+        'on_hold': on_hold,
         'reg_then_add_to_cart_link': reg_then_add_to_cart_link,
         'show_courseware_link': show_courseware_link,
         'is_course_full': is_course_full,

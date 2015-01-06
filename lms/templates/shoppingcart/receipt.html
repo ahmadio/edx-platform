@@ -303,12 +303,14 @@ from courseware.courses import course_image_url, get_course_about_section, get_c
                   % endif
                 </div>
                 <div class="col-2">
+<!--
                   <div class="numbers-row">
                     <label>${_("Students")}:</label>
                     <div class="counter no-border text-dark-grey">
                       ${item.qty}
                     </div>
                   </div>
+-->
                 </div>
               % elif item.status == "refunded":
                 <div class="col-1">
@@ -323,12 +325,14 @@ from courseware.courses import course_image_url, get_course_about_section, get_c
                   % endif
                 </div>
                 <div class="col-2">
+<!--
                   <div class="numbers-row">
                     <label>${_("Students")}:</label>
                     <div class="counter no-border">
                       <del>${item.qty}</del>
                     </div>
                   </div>
+-->
                 </div>
               %endif
             </div>

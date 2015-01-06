@@ -38,6 +38,9 @@ from .models import (
     CouponRedemption, CourseRegistrationCode, RegistrationCodeRedemption,
     Donation, DonationConfiguration
 )
+from direct_payments.models import OnHoldPaidRegistration
+from direct_payments.utils import render_direct_payments_form_html
+
 from .processors import (
     process_postpay_callback, render_purchase_form_html,
     get_signed_purchase_params, get_purchase_endpoint
@@ -76,7 +79,8 @@ def add_course_to_cart(request, course_id):
     Adds course specified by course_id to the cart.  The model function add_to_order does all the
     heavy lifting (logging, error checking, etc)
     """
-
+    
+    ##################### check if direct payment enabled
     assert isinstance(course_id, basestring)
     if not request.user.is_authenticated():
         log.info("Anon user trying to add course {} to cart".format(course_id))
@@ -85,7 +89,12 @@ def add_course_to_cart(request, course_id):
     course_key = SlashSeparatedCourseKey.from_deprecated_string(course_id)
     # All logging from here handled by the model
     try:
-        paid_course_item = PaidCourseRegistration.add_to_order(cart, course_key)
+        if settings.FORCE_DIRECT_PAYMENTS:
+            paid_course_item = OnHoldPaidRegistration.add_to_order(cart, course_key)
+            print 'Forced payment'
+        else:
+            paid_course_item = PaidCourseRegistration.add_to_order(cart, course_key)
+            print 'Normal flow'
     except CourseDoesNotExistException:
         return HttpResponseNotFound(_('The course you requested does not exist.'))
     except ItemAlreadyInCartException:
@@ -162,7 +171,11 @@ def show_cart(request):
     callback_url = request.build_absolute_uri(
         reverse("shoppingcart.views.postpay_callback")
     )
-    form_html = render_purchase_form_html(cart, callback_url=callback_url)
+    if settings.FORCE_DIRECT_PAYMENTS:
+        form_html = render_direct_payments_form_html(cart)
+    else:
+        form_html = render_purchase_form_html(cart, callback_url=callback_url)
+    
     context = {
         'order': cart,
         'shoppingcart_items': valid_cart_item_tuples,

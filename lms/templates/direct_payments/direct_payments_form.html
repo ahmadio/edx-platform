@@ -1,0 +1,10 @@
+<%! from django.core.urlresolvers import reverse %>
+
+        <form action="${reverse('direct_purchase_order')}" method="post">
+           <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+            % for pk, pv in params.iteritems():
+                <input type="hidden" name="${pk}" value="${pv}" />
+            % endfor
+
+                <i class="icon-caret-right"></i><input type="submit" value="Payment"/>
+        </form> 

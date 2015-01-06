@@ -146,6 +146,10 @@
           <span class="add-to-cart">
             ${_('This course is in your <a href="{cart_link}">cart</a>.').format(cart_link=cart_link)}
           </span>
+        %elif on_hold:
+          <span class="add-to-cart">
+            ${_('This course is on hold please charge your balance to continue')}
+          </span>
         % elif is_course_full:
           <span class="register disabled">
             ${_("Course is full")}

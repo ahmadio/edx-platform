@@ -850,6 +850,9 @@ EMBARGO_SITE_REDIRECT_URL = None
 ##### shoppingcart Payment #####
 PAYMENT_SUPPORT_EMAIL = 'payment@example.com'
 
+#### FORCE_DIRECT_PAYMENTS #####
+FORCE_DIRECT_PAYMENTS = True
+
 ##### Using cybersource by default #####
 
 CC_PROCESSOR_NAME = 'CyberSource'
