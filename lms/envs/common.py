@@ -321,7 +321,8 @@ XQUEUE_WAITTIME_BETWEEN_REQUESTS = 5  # seconds
 
 ############################# SET PATH INFORMATION #############################
 PROJECT_ROOT = path(__file__).abspath().dirname().dirname()  # /edx-platform/lms
-REPO_ROOT = PROJECT_ROOT.dirname()
+REPO_ROOT = PROJECT_ROOT.dirname() 
+DARESS_THEME = REPO_ROOT / "daress_theme"
 COMMON_ROOT = REPO_ROOT / "common"
 ENV_ROOT = REPO_ROOT.dirname()  # virtualenv dir /edx-platform is in
 COURSES_ROOT = ENV_ROOT / "data"
@@ -383,7 +384,8 @@ OAUTH_OIDC_USERINFO_HANDLERS = (
 import tempfile
 MAKO_MODULE_DIR = os.path.join(tempfile.gettempdir(), 'mako_lms')
 MAKO_TEMPLATES = {}
-MAKO_TEMPLATES['main'] = [PROJECT_ROOT / 'templates',
+MAKO_TEMPLATES['main'] = [DARESS_THEME,
+                          PROJECT_ROOT / 'templates',
                           COMMON_ROOT / 'templates',
                           COMMON_ROOT / 'lib' / 'capa' / 'capa' / 'templates',
                           COMMON_ROOT / 'djangoapps' / 'pipeline_mako' / 'templates']
