@@ -31,6 +31,16 @@ def index(request):
     }
     return render_to_response("direct_payments/index.html", context)
 
+def testing_view(request):
+    """
+    for testing
+    """
+    charges = Charge.objects.filter(user=request.user)
+    context = {
+        'charges':charges
+    }
+    return render_to_response("testing_page.html", context)
+
 
 @login_required
 def new_charge(request):

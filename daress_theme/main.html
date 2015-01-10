@@ -67,12 +67,15 @@
   <%static:css group='style-app'/>
   <%static:css group='style-app-extend1'/>
   <%static:css group='style-app-extend2'/>
+  <%static:css group='daress_theme_styles'/>
 
   % if disable_courseware_js:
     <%static:js group='base_vendor'/>
   % else:
     <%static:js group='main_vendor'/>
   % endif
+
+  <%static:js group='angular_js'/>
 
   <script>
     window.baseUrl = "${settings.STATIC_URL}";
@@ -146,7 +149,7 @@
 </head>
 
 <body class="${dir_rtl} <%block name='bodyclass'/> lang_${LANGUAGE_CODE}">
-  <div class="window-wrap" dir="${dir_rtl}">
+  <div class="window-wrap holy-wrapper" dir="${dir_rtl}">
     <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to this view's content")}</a>
 
     <%include file="mathjax_accessible.html" />

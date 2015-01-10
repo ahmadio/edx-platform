@@ -1,0 +1,97 @@
+.content-wrapper {
+    background: #ebebeb;
+}
+
+.holy-wrapper {
+    background: #efeddd;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+.thin-side {
+    background: #fff;
+    width: 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100000;
+}
+
+.shadow-right {
+    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-y {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.thin-side .item {
+    display: block;
+    height: 80px;
+}
+.content-wrapper {
+    background: #ebebeb;
+    position: absolute;
+    left: 70px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    padding-bottom: 0;
+}
+
+.x-panel {
+    background: #fff;
+    height: 100%;
+    position: relative;
+}
+
+.settings-panel {
+    min-width: 160px;
+    max-width: 160px;
+    z-index: 10000;
+}
+
+.content-panel {
+    min-width: 450px;
+    max-width: 450px;
+    z-index: 1000;
+}
+/*
+.page-title {
+}
+.board {
+    display: flex;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: stretch;
+    
+}
+.list {
+    min-width: 260px;
+    background: #fff;
+    border-radius: 5px;
+    flex: 0 0 260px;
+    margin: 10px;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.card {
+    border: 1px solid #aad0cd;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+*/

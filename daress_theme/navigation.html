@@ -36,7 +36,7 @@ site_status_msg = get_site_status_msg(course_id)
 % endif
 </%block>
 
-  <header class="global ${"slim" if course else ""}" aria-label="${_('Global Navigation')}">
+  <header class="thin-side shadow-right">
     <nav>
     <h1 class="logo">
       <a href="${marketing_link('ROOT')}">
@@ -61,6 +61,12 @@ site_status_msg = get_site_status_msg(course_id)
       </%block>
     </ol>
     <ol class="user">
+        <li
+      <li class="primary">
+        <a href="${reverse('dashboard')}" class="user-link">
+          <span class="avatar"><img src="https://pbs.twimg.com/profile_images/1313156826/Heart-No-Bg_bigger.png" alt="${user.username}" /></span>
+        </a>
+      </li>
       <li class="primary">
         <a href="${reverse('dashboard')}" class="user-link">
           <span class="avatar"></span>

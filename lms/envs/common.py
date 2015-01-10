@@ -993,6 +993,12 @@ STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 from rooted_paths import rooted_glob
 
+angular_js = [
+    'daress_theme/js/angular-1.3.8/angular.js',
+    'daress_theme/js/ui-router/ui-router.js',
+    'daress_theme/js/modules/testing_page.js'
+]
+
 courseware_js = (
     [
         'coffee/src/' + pth + '.js'
@@ -1069,6 +1075,12 @@ PIPELINE_CSS = {
             'css/vendor/responsive-carousel/responsive-carousel.slide.css',
         ],
         'output_filename': 'css/lms-style-vendor.css',
+    },
+    'daress_theme_styles': {
+        'source_filenames': [
+            'daress_theme/styles/main-style.css',
+        ],
+        'output_filename': 'css/daress_theme_styles.css',
     },
     'style-vendor-tinymce-content': {
         'source_filenames': [
@@ -1182,6 +1194,10 @@ PIPELINE_JS = {
             'js/src/string_utils.js',
         ],
         'output_filename': 'js/lms-application.js',
+    },
+    'angular_js': {
+        'source_filenames': angular_js,
+        'output_filename': 'js/angular.js',
     },
     'courseware': {
         'source_filenames': courseware_js,
