@@ -7,6 +7,7 @@ navigation.  We want to do this in the context_processor to
 """
 
 from .models import Order, PaidCourseRegistration, CourseRegCodeItem
+from direct_payments.models import OnHoldPaidRegistration
 from .utils import is_shopping_cart_enabled
 
 
@@ -31,7 +32,7 @@ def user_has_cart_context_processor(request):
             # user's cart has PaidCourseRegistrations or CourseRegCodeItem
             Order.user_cart_has_items(
                 request.user,
-                [PaidCourseRegistration, CourseRegCodeItem]
+                [PaidCourseRegistration, OnHoldPaidRegistration, CourseRegCodeItem]
             )
         )
 

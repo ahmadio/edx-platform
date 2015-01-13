@@ -1,12 +1,3 @@
-<!--
-<div ng-app class="settings-panel shadow-right scroll-y x-panel">
-         <input ng-model="title">
-          <h2>{{ title }}</h2>
-          <a ui-sref="about">about</a>
-      </div>
-      <div ui-view class="x-panel"></div>-->
-
-
 <%! from django.utils.translation import ugettext as _ %>
 <%! from django.template import RequestContext %>
 <%! import third_party_auth %>
@@ -40,6 +31,7 @@
 
 <%block name="js_extra">
   <%static:js group='dashboard'/>
+  <%static:js group='angular_dashboard'/>
   <script type="text/javascript">
     $(document).ready(function() {
       edx.dashboard.legacy.init({
@@ -82,7 +74,98 @@
     %endif
 </div>
 
+
+<div ng-app='dashboard' class="dashboard-container">
+    <div  class="settings-panel shadow-right scroll-y x-panel .x-panel--stretch-left">
+          <nav>
+              <ul class="dashboard-nav">
+                  <li class="dashboard-nav__item"><a ui-sref="timeline">Timeline</a></li>
+                  <li class="dashboard-nav__item"><a ui-sref="notifications">Notifications</a></li>
+                  <li class="dashboard-nav__item"><a ui-sref="my-courses">My courses</a></li>
+                  <li class="dashboard-nav__item"><a ui-sref="pinding-enrolls">Pinding enrolls</a></li>
+                  <li class="dashboard-nav__item"><a ui-sref="payments">Payments</a></li>
+              </ul>
+          </nav>
+      </div>
+      <div ui-view class="x-panel content-panel shadow-right scroll-y">
+          
+    </div>
+    
+<!-- Timeline panel template -->
+<script type="text/ng-template" id='timeline.tmpl.html'>
+      <div class="x-panel x-panel--stretch-left x-panel--stretch-right">
+          <h2 class="content-panel__message">${_("Your timeline will have content soon.")}</h2>
+             <%!
+from django.core.urlresolvers import reverse
+%>
+         <ul>
+   <h1>{{ message }}</h1
+</ul>
+          
+      </div>
+    </script>
+
+<!-- Notifications panel template -->
+<script type="text/ng-template" id='notifications.tmpl.html'>
+      <div class="x-panel x-panel--stretch-left x-panel--stretch-right">
+          <h2 class="content-panel__message">${_("Your notifications will have content soon.")}</h2>
+             <%!
+from django.core.urlresolvers import reverse
+%>
+         <ul>
+   <h1>{{ message }}</h1
+</ul>
+          
+      </div>
+    </script>
+    
+<!-- Notifications panel template -->
+<script type="text/ng-template" id='my-courses.tmpl.html'>
+      <div class="x-panel x-panel--stretch-left x-panel--stretch-right">
+          <h2 class="content-panel__message">${_("my courses")}</h2>
+             <%!
+from django.core.urlresolvers import reverse
+%>
+         <ul>
+   <h1>{{ message }}</h1
+</ul>
+          
+      </div>
+    </script>
+    
+<!-- Notifications panel template -->
+<script type="text/ng-template" id='pinding-enrolls.tmpl.html'>
+      <div class="x-panel x-panel--stretch-left x-panel--stretch-right">
+          <h2 class="content-panel__message">${_("my pinding enrolls")}</h2>
+             <%!
+from django.core.urlresolvers import reverse
+%>
+         <ul>
+   <h1>{{ message }}</h1
+</ul>
+          
+      </div>
+</script>
+
+<!-- Notifications panel template -->
+<script type="text/ng-template" id='payments.tmpl.html'>
+      <div class="x-panel x-panel--stretch-left x-panel--stretch-right">
+          <h2 class="content-panel__message">${_("my payments")}</h2>
+             <%!
+from django.core.urlresolvers import reverse
+%>
+         <ul>
+   <h1>{{ message }}</h1
+</ul>
+          
+      </div>
+</script>
+    
+</div>
+
+<!--
 <section class="container dashboard" id="dashboard-main">
+  
 
   <section class="profile-sidebar">
     <header class="profile">
@@ -160,7 +243,7 @@
           <span class="title"><a href="#password_reset_complete" rel="leanModal" id="pwd_reset_button">${_("Reset Password")}</a></span>
           <form id="password_reset_form" method="post" data-remote="true" action="${reverse('password_reset')}">
             <input id="id_email" type="hidden" name="email" maxlength="75" value="${user.email}" />
-            <!-- <input type="submit" id="pwd_reset_button" value="${_("Reset Password")}" /> -->
+             <input type="submit" id="pwd_reset_button" value="${_("Reset Password")}" /> 
           </form>
         </li>
         % endif
@@ -224,6 +307,7 @@
     % endif
   </section>
 </section>
+-->
 
 <section id="email-settings-modal" class="modal" aria-hidden="true">
   <div class="inner-wrapper" role="dialog" aria-labelledby="email-settings-title">

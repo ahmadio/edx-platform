@@ -1,5 +1,6 @@
 .content-wrapper {
     background: #ebebeb;
+    color: rgb(102, 102, 102);
 }
 
 .holy-wrapper {
@@ -11,6 +12,7 @@
     bottom: 0;
     overflow: hidden;
 }
+
 .thin-side {
     background: #fff;
     width: 70px;
@@ -21,10 +23,63 @@
     z-index: 100000;
 }
 
+.thin-side .logo {
+    background: #eaeaea;
+}
+
+.thin-side .logo img {
+    width: 55px;
+    margin: 0 auto;
+    padding: 10px 5px;
+    
+}
+
 .shadow-right {
     box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.2);
 }
 
+h1.logo {
+    margin-bottom: 0;
+}
+
+.thin-side nav > ol > li {
+    min-height: 60px;
+    height: 60px;
+    width: 100%;
+    font-size: 12px !important;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.thin-side nav > ol > li a {
+    height: 100%;
+    display: block;
+}
+
+.thin-side a.menu-link {
+    padding-top: 20px;
+    font-size: 12px !important;
+}
+
+.user .avatar {
+    
+}
+
+.user .avatar img {
+    width: 50px;
+    margin: 0;
+    padding: 10px;
+}
+
+.user .settings {
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 10px;
+}
+
+.user .settings li a {
+    padding-bottom: 10px;
+}
 .scroll-y {
     overflow-y: auto;
     overflow-x: hidden;
@@ -41,57 +96,55 @@
     top: 0;
     bottom: 0;
     right: 0;
-    display: flex;
+/*    display: flex;*/
     padding-bottom: 0;
+}
+
+.dashboard-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
 }
 
 .x-panel {
     background: #fff;
-    height: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.x-panel--stretch-left {
+    left: 0;
+}
+
+.x-panel--stretch-right {
+    right: 0;
 }
 
 .settings-panel {
-    min-width: 160px;
-    max-width: 160px;
+    width: 200px;
     z-index: 10000;
 }
 
+
+
 .content-panel {
-    min-width: 450px;
-    max-width: 450px;
+    width: 500px;
+    left: 200px;
     z-index: 1000;
 }
-/*
-.page-title {
-}
-.board {
-    display: flex;
-    position: absolute;
-    top: 100px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    align-items: stretch;
-    
-}
-.list {
-    min-width: 260px;
-    background: #fff;
-    border-radius: 5px;
-    flex: 0 0 260px;
-    margin: 10px;
-    padding: 10px;
-    overflow-y: auto;
+
+.dashboard-nav {
+/*     margin: 20px;*/
 }
 
-.card {
-    border: 1px solid #aad0cd;
-    margin-bottom: 10px;
-    padding: 5px;
-    border-radius: 5px;
+.dashboard-nav__item {
+    padding: 20px;
+    border-bottom: solid 1px #ebebeb;
 }
 
-*/
+.dashboard-nav__item > a {
+    display: block
+}

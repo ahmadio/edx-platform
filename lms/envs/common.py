@@ -996,7 +996,10 @@ from rooted_paths import rooted_glob
 angular_js = [
     'daress_theme/js/angular-1.3.8/angular.js',
     'daress_theme/js/ui-router/ui-router.js',
-    'daress_theme/js/modules/testing_page.js'
+]
+
+angular_dashboard = [
+    'daress_theme/js/modules/dashboard/angular_dashboard.js'
 ]
 
 courseware_js = (
@@ -1198,6 +1201,10 @@ PIPELINE_JS = {
     'angular_js': {
         'source_filenames': angular_js,
         'output_filename': 'js/angular.js',
+    },
+    'angular_dashboard': {
+        'source_filenames': angular_dashboard,
+        'output_filename': 'js/angular_dashboard.js',
     },
     'courseware': {
         'source_filenames': courseware_js,
