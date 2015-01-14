@@ -99,7 +99,10 @@ h1.logo {
     overflow-y: auto;
 }
 
-
+.global-course-title {
+    margin-bottom: 0;
+    padding: 20px 20px 0;
+}
 
 .chat-wrapper {
     background: #57543e;
@@ -221,8 +224,22 @@ h1.logo {
     color: #909090;
 }
 
-.global-course-title {
-    margin-bottom: 0;
-    padding: 20px 20px 0;
+.my-courses .listing-courses .course-item .due-amount {
+    font-size: 14px;
+    color: #909090;
+    margin-right: 10px;
 }
+
+.my-courses .listing-courses .course-item .payment-action {
+    font-size: 12px;
+    border: 1px solid;
+    padding: 3px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+
+
+
+
+
 

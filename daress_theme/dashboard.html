@@ -165,12 +165,92 @@
     % endif
       </div>
     </script>
-    
+    <a ui-sref="payments"></a>
 <!-- Notifications panel template -->
 <script type="text/ng-template" id='pinding-enrolls.tmpl.html'>
-      <div class="x-panel x-panel--stretch-left x-panel--stretch-right">
-          <h2 class="content-panel__message">${_("my pinding enrolls")}</h2>
-   
+      <div class="x-panel x-panel--stretch-left x-panel--stretch-right my-courses">
+
+    % if len(on_hold_registration_pairs) > 0:
+      <ul class="listing-courses">
+        % for course, registration in on_hold_registration_pairs:
+            <% show_courseware_link = (course.id in show_courseware_links_for) %>
+            
+            <li class="course-item">
+    <article class="course">
+            <%
+              course_target = reverse('info', args=[course.id.to_deprecated_string()])
+            %>
+
+        % if show_courseware_link:
+            <a href="${course_target}" class="cover">
+            <img src="${course_image_url(course)}" alt="${_('{course_number} {course_name} Cover Image').format(course_number=course.number, course_name=course.display_name_with_default) |h}" />
+          </a>
+        % else:
+          <div class="cover">
+            <img src="${course_image_url(course)}" alt="${_('{course_number} {course_name} Cover Image').format(course_number=course.number, course_name=course.display_name_with_default) | h}" />
+          </div>
+        % endif
+
+    <section class="info">
+      <hgroup>
+        <p class="date-block">
+         % if course.has_ended():
+            ${_("Course Completed - {end_date}").format(end_date=course.end_datetime_text("DATE_TIME"))}
+            % elif course.has_started():
+            ${_("Course Started - {start_date}").format(start_date=course.start_datetime_text("DATE_TIME"))}
+            % elif course.start_date_is_still_default: # Course start date TBD
+            ${_("Course has not yet started")}
+            % else:   # hasn't started yet
+            ${_("Course Starts - {start_date}").format(start_date=course.start_datetime_text("DATE_TIME"))}
+            % endif
+            </p>
+            <h2 class="university">${get_course_about_section(course, 'university')}</h2>
+        <h3>
+          % if show_courseware_link:
+            <a href="${course_target}">${course.display_number_with_default | h} ${course.display_name_with_default}</a>
+          % else:
+            <span>${course.display_name_with_default}</span>
+          % endif
+        </h3>
+      </hgroup>
+      <span class="due-amount">${registration.unit_cost} USD</span>
+      <a ui-sref="payments" class="payment-action">your balance</a>
+      <a ui-sref="payments.add-charge" class="payment-action">add charge</a>
+
+  </section>
+</article>
+
+</li>
+      % endfor
+      </ul>
+    % else:
+      <section class="empty-dashboard-message">
+        % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+          <p>${_("Looks like you haven't enrolled in any courses yet.")}</p>
+          <a href="${marketing_link('COURSES')}">
+            ${_("Find courses now!")}
+          </a>
+        % else:
+          <p>${_("Looks like you haven't enrolled in any courses yet.")}</p>
+        %endif
+      </section>
+    % endif
+
+    % if staff_access and len(errored_courses) > 0:
+      <div id="course-errors">
+        <h2>${_("Course-loading errors")}</h2>
+
+      % for course_dir, errors in errored_courses.items():
+         <h3>${course_dir | h}</h3>
+             <ul>
+           % for (msg, err) in errors:
+               <li>${msg}
+                 <ul><li><pre>${err}</pre></li></ul>
+               </li>
+           % endfor
+             </ul>
+      % endfor
+    % endif
       </div>
 </script>
 
@@ -178,12 +258,6 @@
 <script type="text/ng-template" id='payments.tmpl.html'>
       <div class="x-panel x-panel--stretch-left x-panel--stretch-right">
           <h2 class="content-panel__message">${_("my payments")}</h2>
-             <%!
-from django.core.urlresolvers import reverse
-%>
-         <ul>
-   <h1>{{ message }}</h1
-</ul>
           
       </div>
 </script>

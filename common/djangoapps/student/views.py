@@ -107,6 +107,9 @@ from xmodule.error_module import ErrorDescriptor
 from shoppingcart.models import CourseRegistrationCode
 from openedx.core.djangoapps.user_api.api import profile as profile_api
 
+from direct_payments.models import OnHoldPaidRegistration
+from direct_payments.utils import get_on_hold_registration_pairs
+
 import analytics
 from eventtracking import tracker
 
@@ -282,7 +285,6 @@ def get_course_enrollment_pairs(user, course_org_filter, org_filter_out_set):
                 log.error("User {0} enrolled in {2} course {1}".format(
                     user.username, enrollment.course_id, "broken" if course else "non-existent"
                 ))
-
 
 def _cert_info(user, course, cert_status):
     """
@@ -502,6 +504,11 @@ def dashboard(request):
     # longer exist (because the course IDs have changed). Still, we don't delete those
     # enrollments, because it could have been a data push snafu.
     course_enrollment_pairs = list(get_course_enrollment_pairs(user, course_org_filter, org_filter_out_set))
+    
+    # on hold registrations for this user
+    on_hold_registrations = OnHoldPaidRegistration.get_on_hold_registrations_for_user(request.user)
+    on_hold_registration_pairs = list(get_on_hold_registration_pairs(on_hold_registrations))
+#    courses = [registration.course_id for registration in on_hold_registrations]
 
     # sort the enrollment pairs by the enrollment date
     course_enrollment_pairs.sort(key=lambda x: x[1].created, reverse=True)
@@ -644,6 +651,7 @@ def dashboard(request):
     context = {
         'enrollment_message': enrollment_message,
         'course_enrollment_pairs': course_enrollment_pairs,
+        'on_hold_registration_pairs': on_hold_registration_pairs,
         'course_optouts': course_optouts,
         'message': message,
         'external_auth_map': external_auth_map,

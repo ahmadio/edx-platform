@@ -183,6 +183,13 @@ class OnHoldPaidRegistration(OrderItem):
         ]
     
     @classmethod
+    def get_on_hold_registrations_for_user(cls, user):
+        """
+        return onHoldRegistrations for given user
+        """
+        return [item for item in cls.objects.filter(user=user, status='onhold') if isinstance(item, cls)]
+    
+    @classmethod
     @transaction.commit_on_success
     def add_to_order(cls, order, course_id, mode_slug=CourseMode.DEFAULT_MODE_SLUG, cost=None, currency=None):
         """
