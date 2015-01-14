@@ -159,14 +159,31 @@
   %endif
 
     <div class="content-wrapper" id="content">
-      ${self.body()}
+         % if course:
+        <div class="course-view">
+        <h2 class="global-course-title">
+            ${course.display_name_with_default}
+        </h2>
+            ${self.body()}
+        </div>
+        % else:
+            ${self.body()}
+        % endif
+      
       <%block name="bodyextra"/>
     </div>
 
   % if not suppress_toplevel_navigation:
     <%include file="${footer_file}" />
   % endif
-
+  
+<!--
+  % if course:
+      <div class="chat-wrapper">
+          <small>Chat</small>
+      </div>
+  % endif
+-->
   </div>
 
   <script>window.baseUrl = "${settings.STATIC_URL}";</script>

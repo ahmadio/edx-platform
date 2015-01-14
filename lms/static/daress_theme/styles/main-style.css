@@ -1,8 +1,3 @@
-.content-wrapper {
-    background: #ebebeb;
-    color: rgb(102, 102, 102);
-}
-
 .holy-wrapper {
     background: #efeddd;
     position: absolute;
@@ -24,7 +19,7 @@
 }
 
 .thin-side .logo {
-    background: #eaeaea;
+    background: #efedde;
 }
 
 .thin-side .logo img {
@@ -35,7 +30,7 @@
 }
 
 .shadow-right {
-    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 h1.logo {
@@ -48,12 +43,13 @@ h1.logo {
     width: 100%;
     font-size: 12px !important;
     text-align: center;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #efedde;
 }
 
 .thin-side nav > ol > li a {
     height: 100%;
     display: block;
+    text-align: center;
 }
 
 .thin-side a.menu-link {
@@ -90,13 +86,28 @@ h1.logo {
     height: 80px;
 }
 .content-wrapper {
-    background: #ebebeb;
+    color: rgb(102, 102, 102);
+    background: #efedde;
     position: absolute;
     left: 70px;
     top: 0;
     bottom: 0;
     right: 0;
 /*    display: flex;*/
+    padding-bottom: 0;
+    width: auto !important;
+    overflow-y: auto;
+}
+
+
+
+.chat-wrapper {
+    background: #57543e;
+    position: absolute;
+    width: 70px;
+    top: 0;
+    bottom: 0;
+    right: 0;
     padding-bottom: 0;
 }
 
@@ -148,3 +159,70 @@ h1.logo {
 .dashboard-nav__item > a {
     display: block
 }
+
+.my-courses {
+    background: #fafafa;
+}
+
+.my-courses .listing-courses {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.my-courses .listing-courses .course-item {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    transition: all 700ms;
+}
+
+.my-courses .listing-courses .course-item:hover {
+    box-shadow: 0px 1px 1px 0px rgb(72, 156, 255)
+}
+
+.my-courses .listing-courses .course-item .cover img {
+    height: 150px;
+    display: block;
+}
+
+.my-courses .listing-courses .course-item .info {
+    background: #fafafa;
+    padding: 10px;
+}
+
+.my-courses .listing-courses .course-item .info .university {
+    display: none;
+}
+
+.my-courses .listing-courses .course-item .info .date-block {
+    color: #888;
+}
+
+.my-courses .listing-courses .course-item .info h3 {
+    font-size: 20px;
+    padding: 0 0 15px;
+}
+
+.my-courses .listing-courses .course-item .enter-course {
+    display: none;
+}
+
+.my-courses .listing-courses .course-item .unenroll,
+.my-courses .listing-courses .course-item .email-settings {
+    font-size: 12px;
+    border: 1px solid #eaeaea;
+    padding: 3px;
+    margin-right: 10px;
+    border-radius: 3px;
+    outline: 0;    
+    color: #909090;
+}
+
+.global-course-title {
+    margin-bottom: 0;
+    padding: 20px 20px 0;
+}
+

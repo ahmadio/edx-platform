@@ -9,7 +9,7 @@ dashboard.config(['$stateProvider', '$urlRouterProvider', '$urlMatcherFactoryPro
             // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/',
-            templateUrl: 'timeline.tmpl.html'
+            templateUrl: 'my-courses.tmpl.html'
         })
         
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
