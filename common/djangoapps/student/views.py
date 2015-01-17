@@ -107,7 +107,7 @@ from xmodule.error_module import ErrorDescriptor
 from shoppingcart.models import CourseRegistrationCode
 from openedx.core.djangoapps.user_api.api import profile as profile_api
 
-from direct_payments.models import OnHoldPaidRegistration
+from direct_payments.models import OnHoldPaidRegistration, UserBalance, Charge
 from direct_payments.utils import get_on_hold_registration_pairs
 
 import analytics
@@ -508,7 +508,12 @@ def dashboard(request):
     # on hold registrations for this user
     on_hold_registrations = OnHoldPaidRegistration.get_on_hold_registrations_for_user(request.user)
     on_hold_registration_pairs = list(get_on_hold_registration_pairs(on_hold_registrations))
-#    courses = [registration.course_id for registration in on_hold_registrations]
+
+    # get user balance
+    user_balance = UserBalance.get_user_balance(request.user)
+    
+    # get user charges
+    user_charges = Charge.objects.filter(user=request.user, is_shown=True)
 
     # sort the enrollment pairs by the enrollment date
     course_enrollment_pairs.sort(key=lambda x: x[1].created, reverse=True)
@@ -652,6 +657,8 @@ def dashboard(request):
         'enrollment_message': enrollment_message,
         'course_enrollment_pairs': course_enrollment_pairs,
         'on_hold_registration_pairs': on_hold_registration_pairs,
+        'user_balance': user_balance,
+        'user_charges': user_charges,
         'course_optouts': course_optouts,
         'message': message,
         'external_auth_map': external_auth_map,
