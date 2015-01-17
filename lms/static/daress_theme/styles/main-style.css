@@ -297,10 +297,18 @@ h1.logo {
     display: inline-block;
     font-size: 14px;
 }
+
 .charges-list__item__attachment {
-	max-height: 300px;
+	/*max-height: 300px;
 	width: auto;
-	overflow: auto;
+	overflow: auto;*/
+}
+
+.charges-list__item__attachment img {
+    max-height: 320px;
+    width: 450px;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .charges-list__item__time {
