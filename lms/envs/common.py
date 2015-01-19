@@ -38,7 +38,7 @@ from lms.djangoapps.lms_xblock.mixin import LmsBlockMixin
 
 ################################### FEATURES ###################################
 # The display name of the platform to be used in templates/emails/etc.
-PLATFORM_NAME = "Your Platform Name Here"
+PLATFORM_NAME = "Daress"
 CC_MERCHANT_NAME = PLATFORM_NAME
 
 PLATFORM_FACEBOOK_ACCOUNT = "http://www.facebook.com/YourPlatformFacebookAccount"
@@ -1002,6 +1002,10 @@ angular_dashboard = [
     'daress_theme/js/modules/dashboard/angular_dashboard.js'
 ]
 
+angular_daress_manager = [
+    'daress_theme/js/modules/daress_manager/angular_daress_manager.js'
+]
+
 courseware_js = (
     [
         'coffee/src/' + pth + '.js'
@@ -1084,6 +1088,12 @@ PIPELINE_CSS = {
             'daress_theme/styles/main-style.css',
         ],
         'output_filename': 'css/daress_theme_styles.css',
+    },
+    'semantic_ui': {
+        'source_filenames': [
+            'daress_theme/semantic-ui/css/semantic.css',
+        ],
+        'output_filename': 'css/semantic-ui.css',
     },
     'style-vendor-tinymce-content': {
         'source_filenames': [
@@ -1202,9 +1212,19 @@ PIPELINE_JS = {
         'source_filenames': angular_js,
         'output_filename': 'js/angular.js',
     },
+    'semantic_ui': {
+        'source_filenames': [
+            'daress_theme/semantic-ui/javascript/semantic.js',
+        ],
+        'output_filename': 'js/semantic-ui.js',
+    },
     'angular_dashboard': {
         'source_filenames': angular_dashboard,
         'output_filename': 'js/angular_dashboard.js',
+    },
+    'angular_daress_manager': {
+        'source_filenames': angular_daress_manager,
+        'output_filename': 'js/angular_daress_manager.js',
     },
     'courseware': {
         'source_filenames': courseware_js,
@@ -1547,6 +1567,7 @@ INSTALLED_APPS = (
     
     # Daress specific 
     'direct_payments',
+    'daress_manager',
 )
 
 ######################### MARKETING SITE ###############################

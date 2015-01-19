@@ -72,6 +72,13 @@ site_status_msg = get_site_status_msg(course_id)
           <span class="sr">${_("Dashboard for:")} </span> ${_('Messages')}
         </a>
       </li>
+      % if user.is_superuser:
+        <li class="Manager">
+          <a href="${reverse('daress_manager_index')}" class="menu-link">
+            <span class="sr">${_("Manager dashboard")} </span> ${_('Manager')}
+          </a>
+        </li>
+      % endif
       <li class="settings">
         <ul class="dropdown-menu" aria-label="More Options" role="menu">
           <%block name="navigation_dropdown_menu_links" >

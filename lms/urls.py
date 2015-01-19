@@ -459,9 +459,11 @@ urlpatterns += (
     url(r'^shoppingcart/', include('shoppingcart.urls')),
 )
 
-# Direct Payments
+# Direct apps
 urlpatterns += (
     url(r'^direct_payments/', include('direct_payments.urls')),
+    url(r'^daress-manager/', include('daress_manager.urls')),
+
 )
 
 # Survey Djangoapp

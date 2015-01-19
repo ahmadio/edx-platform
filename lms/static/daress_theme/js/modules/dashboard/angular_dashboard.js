@@ -35,21 +35,20 @@ dashboard.config(['$stateProvider', '$urlRouterProvider', '$urlMatcherFactoryPro
     
         .state('payments', {
             url: '/payments',
-            templateUrl: 'payments.tmpl.html'
+            templateUrl: 'payments.tmpl.html',
+            controller: 'payments'
         });
 }]);
 
 // create the controller and inject Angular's $scope
 
-dashboard.controller('mainController', function($scope) {
-        // create a message to display in our view
-        $scope.message = 'Everyone come and see how good I look!';
-    });
+dashboard.controller('payments', function($scope) {
+    $scope.isChargeFormShown = false;
+    $scope.showChargForm = function () {
+        $scope.isChargeFormShown = !$scope.isChargeFormShown;
+    };
 
-    dashboard.controller('aboutController', function($scope) {
-        $scope.message = 'Look! I am an about page.';
-    });
-
-    dashboard.controller('contactController', function($scope) {
-        $scope.message = 'Contact us! JK. This is just a demo.';
-    });
+    $scope.submitForm = function (chargeId) {
+        $('#'+chargeId+' form').submit();
+    };
+});

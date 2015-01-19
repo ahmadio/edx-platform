@@ -145,10 +145,14 @@ def add_charge_comment(request):
                     return JsonResponse({'msg':'provide comment'}, status=400)
                 if c.user == request.user or request.user.is_superuser:
                     c.add_comment(content, request)
+                    # this is hardcoded and should be removed
+                    return redirect('/dashboard/#/payments')
                     return JsonResponse({'msg':'Comment added'}, status=200)
             except ObjectDoesNotExist:
                 return JsonResponse({'msg':'Charge not found'}, status=404)
         else:
+            # this is hardcoded and should be removed
+            return redirect('/dashboard/#/payments')
             return JsonResponse({'msg':'Missig paramaters'}, status=400)
         
     return JsonResponse({'msg':'Bad Request'}, status=400)

@@ -1,0 +1,73 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%! from django.template import RequestContext %>
+
+<%!
+  from django.core.urlresolvers import reverse
+  from courseware.courses import course_image_url, get_course_about_section
+%>
+
+<%inherit file="../main.html" />
+
+<%namespace name='static' file='../static_content.html'/>
+
+<%block name="pagetitle">${_("Daress manager")}</%block>
+<%block name="bodyclass">view-dashboard is-authenticated</%block>
+<%block name="nav_skip">#my-courses</%block>
+
+<%block name="js_extra">
+  <%static:js group='angular_daress_manager'/>
+</%block>
+
+<div ng-app='daressManager' class="dashboard-container">
+    <div  class="settings-panel shadow-right scroll-y x-panel .x-panel--stretch-left">
+          <nav>
+              <ul class="dashboard-nav">
+                  <li class="dashboard-nav__item"><a ui-sref="users">Users</a></li>
+                  <li class="dashboard-nav__item"><a ui-sref="payments">Payments</a></li>
+              </ul>
+          </nav>
+      </div>
+      <div ui-view class="x-panel content-panel shadow-right scroll-y">
+   <!-- payments panel template -->
+  <script type="text/ng-template" id='payments.tmpl.html'>
+        <div class="x-panel x-panel--stretch-left x-panel--stretch-right payments">
+            <div class="charges-list">
+            % if len(all_charges) > 0:
+              % for charge in all_charges:
+          <div class="charges-list__item" id="${charge.id}">
+          <div class="charges-list__item__summary">
+            <h2 class="charges-list__item__amount">${charge.amount} USD</h2>
+            <span class="charges-list__item__status">${charge.status}</span>
+            <span class="charges-list__item__time">${charge.created_at}</span>
+          </div>
+          <div class="charges-list__item__attachment"><img src="${charge.attachment.url}" alt="${charge.attachment.name}"></div>
+              
+          <div class="charg-comments">
+          % for comment in charge.comments.all():
+            <div class="charg-comments__comment" id="${charge.id}_${comment.id}">
+              <span class="commenter-image">
+              ${comment.user.username}</span>
+              <span class="charg-comments__comment-content">${comment.content}</span>
+            </div>
+          % endfor
+            <div class="charg-comments__add-comment-box">
+              <form action="${reverse('add_charge_comment')}" method="post">
+             <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+             <span class="commenter-image">${user.username}</span>
+             <input type="hidden" name="charge" value="${charge.id}">
+              <textarea class="charg-comments__add-comment-box__content" placeholder="type your comment" name="content" name="content"></textarea>
+              <button class="add-charge-btn">Comment</p>
+          </form>
+            </div>
+          </div>
+              </div>
+              % endfor
+            % else:
+              <h2>There is no charges on the system yet :)</h2>
+            </div>
+            % endif
+            
+        </div>
+  </script>
+
+</div>
