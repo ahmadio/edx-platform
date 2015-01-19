@@ -121,6 +121,8 @@ def update_charge_status(request):
                     return JsonResponse({'msg':'Not supported'}, status=400)
                 if c.user == request.user or request.user.is_superuser:
                     c.update_status(status, request)
+                    # this is hardcoded and should be removed
+                    return redirect('/daress-manager')
                     return JsonResponse({'msg':'Updated'}, status=200)
             except ObjectDoesNotExist:
                 return JsonResponse({'msg':'Charge not found'}, status=404)
@@ -176,6 +178,7 @@ def direct_purchase_order(request):
     if balance.current_balance == 0:
         order.put_on_hold()
         # redirect to add charges page
+        return redirect('/dashboard/#/payments')
         return JsonResponse({'msg':'No balance, all onhold'}, status=200)
     elif balance.current_balance >= order_total_cost:
         order.purchase()
@@ -197,11 +200,13 @@ def direct_purchase_order(request):
             order.status = 'onhold'
             order.save()
             # TODO: redirect to some descriptive message
+            return redirect('/dashboard/#/pinding-enrolls')
             return JsonResponse({'msg':'Order still has onhold registration/s'}, status=200)
         else:
             order.status = 'purchased'
             order.purchase_time = datetime.now(pytz.utc)
             order.save()
+            return redirect('/dashboard/#/my-courses')
             return JsonResponse({'msg':'Order purchased'}, status=200)
         
         return redirect(reverse('dashboard'))                                           

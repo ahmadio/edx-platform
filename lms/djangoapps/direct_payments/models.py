@@ -88,6 +88,12 @@ class Charge(models.Model):
             b.current_balance = current_balance_amount
             b.save()
 
+            # look for course registrations with onhold status to pay for it automatically
+            for item in OnHoldPaidRegistration.get_on_hold_registrations_for_user(user=self.user):
+                if not item.status == 'purchased':
+                    if b.current_balance >= item.line_cost:
+                        item.purchase_item()
+                        b.deduct_amount(item.line_cost)
         
         else:
             self.status = status

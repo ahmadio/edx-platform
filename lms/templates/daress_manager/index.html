@@ -41,6 +41,14 @@
             <span class="charges-list__item__time">${charge.created_at}</span>
           </div>
           <div class="charges-list__item__attachment"><img src="${charge.attachment.url}" alt="${charge.attachment.name}"></div>
+          <div class="update-charge-status">
+            <form action="${reverse('update_charge_status')}" method="post" id="status">
+               <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+               <input type="hidden" name="status" value="approved">
+               <input type="hidden" name="charge" value="${charge.id}">
+                <input type="submit" value="Approve">
+            </form>
+          </div>
               
           <div class="charg-comments">
           % for comment in charge.comments.all():
@@ -56,8 +64,7 @@
              <span class="commenter-image">${user.username}</span>
              <input type="hidden" name="charge" value="${charge.id}">
               <textarea class="charg-comments__add-comment-box__content" placeholder="type your comment" name="content" name="content"></textarea>
-              <button class="add-charge-btn">Comment</p>
-          </form>
+              <input type="submit" value="Comment">
             </div>
           </div>
               </div>
