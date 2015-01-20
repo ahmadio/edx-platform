@@ -8,6 +8,15 @@
     <%!
 from django.core.urlresolvers import reverse
 %>
+<form action="${reverse('dump_all_users')}" method="POST">
+  <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+  <input type="submit" value="Doooooo">
+</form>
+<form action="${reverse('upload_all_users')}" method="POST" enctype="multipart/form-data" id="new">
+  <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">
+   <input type="file" name="attachment" palceholder="attachment" required />
+   <input type="submit" value="upload">
+</form>
 
 <form action="${reverse('new_charge')}" method="POST" enctype="multipart/form-data" id="new">
   <input type="hidden" name="csrfmiddlewaretoken" value="${ csrf_token }">

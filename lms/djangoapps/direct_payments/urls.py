@@ -8,6 +8,8 @@ from django.conf.urls import patterns, url
 urlpatterns = patterns('direct_payments.views',  # nopep8
                        url(r'^$', 'index', name='direct_payments_index'),
                        url(r'^testing$', 'testing_view', name='testing_view'),
+                       url(r'^dump_all_users$', 'dump_all_users', name='dump_all_users'),
+                       url(r'^upload_all_users$', 'upload_all_users', name='upload_all_users'),
                        url(r'^new_charge$', 'new_charge', name='new_charge'),
                        url(r'^remove_charge_entry$', 'remove_charge_entry', name='remove_charge_entry'),
                        url(r'^update_charge_amount$', 'update_charge_amount', name='update_charge_amount'),
