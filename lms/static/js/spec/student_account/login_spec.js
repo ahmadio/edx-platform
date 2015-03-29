@@ -15,7 +15,7 @@ define([
             view = null,
             requests = null,
             authComplete = false,
-            PLATFORM_NAME = 'edX',
+            PLATFORM_NAME = 'Kashkool',
             USER_DATA = {
                 email: 'xsy@edx.org',
                 password: 'xsyisawesome',

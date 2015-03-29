@@ -14,7 +14,7 @@ define([
             view = null,
             requests = null,
             authComplete = false,
-            PLATFORM_NAME = 'edX',
+            PLATFORM_NAME = 'Kashkool',
             COURSE_ID = "edX/DemoX/Fall",
             USER_DATA = {
                 email: 'xsy@edx.org',
