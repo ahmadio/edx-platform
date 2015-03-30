@@ -126,7 +126,7 @@ FEATURES = {
 
     'ENABLE_MASQUERADE': True,  # allow course staff to change to student view of courseware
 
-    'ENABLE_SYSADMIN_DASHBOARD': True,  # sysadmin dashboard, to see what courses are loaded, to delete & load courses
+    'ENABLE_SYSADMIN_DASHBOARD': False,  # sysadmin dashboard, to see what courses are loaded, to delete & load courses
 
     'DISABLE_LOGIN_BUTTON': False,  # used in systems where login is automatic, eg MIT SSL
 
@@ -351,7 +351,7 @@ FEATURES = {
     'MODE_CREATION_FOR_TESTING': False,
 
     # Courseware search feature
-    'ENABLE_COURSEWARE_SEARCH': False,
+    'ENABLE_COURSEWARE_SEARCH': True,
 
     # log all information from cybersource callbacks
     'LOG_POSTPAY_CALLBACKS': True,
@@ -760,7 +760,7 @@ STATICFILES_DIRS = [
     PROJECT_ROOT / "static",
 ]
 
-FAVICON_PATH = 'images/favicon.ico'
+FAVICON_PATH = 'images/default-theme/favicon.ico'
 
 # Locale/Internationalization
 TIME_ZONE = 'Africa/Cairo'  # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

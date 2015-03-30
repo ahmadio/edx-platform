@@ -39,7 +39,7 @@ ANALYTICS_API_KEY = ""
 
 # Set this to the dashboard URL in order to display the link from the
 # dashboard to the Analytics Dashboard.
-ANALYTICS_DASHBOARD_URL = None
+ANALYTICS_DASHBOARD_URL = True
 
 
 ################################ DEBUG TOOLBAR ################################
