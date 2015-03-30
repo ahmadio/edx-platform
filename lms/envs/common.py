@@ -108,7 +108,7 @@ FEATURES = {
 
     # discussion home panel, which includes a subscription on/off setting for discussion digest emails.
     # this should remain off in production until digest notifications are online.
-    'ENABLE_DISCUSSION_HOME_PANEL': False,
+    'ENABLE_DISCUSSION_HOME_PANEL': True,
 
     # Set this to True if you want the discussion digest emails enabled automatically for new users.
     # This will be set on all new account registrations.
@@ -117,7 +117,7 @@ FEATURES = {
     # in their emails, and they will have no way to resubscribe.
     'ENABLE_DISCUSSION_EMAIL_DIGEST': False,
 
-    'ENABLE_PSYCHOMETRICS': False,  # real-time psychometrics (eg item response theory analysis in instructor dashboard)
+    'ENABLE_PSYCHOMETRICS': True,  # real-time psychometrics (eg item response theory analysis in instructor dashboard)
 
     'ENABLE_DJANGO_ADMIN_SITE': True,  # set true to enable django's admin site, even on prod (e.g. for course ops)
     'ENABLE_SQL_TRACKING_LOGS': False,
@@ -126,7 +126,7 @@ FEATURES = {
 
     'ENABLE_MASQUERADE': True,  # allow course staff to change to student view of courseware
 
-    'ENABLE_SYSADMIN_DASHBOARD': False,  # sysadmin dashboard, to see what courses are loaded, to delete & load courses
+    'ENABLE_SYSADMIN_DASHBOARD': True,  # sysadmin dashboard, to see what courses are loaded, to delete & load courses
 
     'DISABLE_LOGIN_BUTTON': False,  # used in systems where login is automatic, eg MIT SSL
 
@@ -145,11 +145,11 @@ FEATURES = {
     'SHIB_DISABLE_TOS': False,
 
     # Toggles OAuth2 authentication provider
-    'ENABLE_OAUTH2_PROVIDER': False,
+    'ENABLE_OAUTH2_PROVIDER': True,
 
     # Allows to enable an API endpoint to serve XBlock view, used for example by external applications.
     # See jquey-xblock: https://github.com/edx-solutions/jquery-xblock
-    'ENABLE_XBLOCK_VIEW_ENDPOINT': False,
+    'ENABLE_XBLOCK_VIEW_ENDPOINT': True,
 
     # Allows to configure the LMS to provide CORS headers to serve requests from other domains
     'ENABLE_CORS_HEADERS': False,
@@ -193,10 +193,10 @@ FEATURES = {
 
     # Turn on a page that lets staff enter Python code to be run in the
     # sandbox, for testing whether it's enabled properly.
-    'ENABLE_DEBUG_RUN_PYTHON': False,
+    'ENABLE_DEBUG_RUN_PYTHON': True,
 
     # Enable URL that shows information about the status of variuous services
-    'ENABLE_SERVICE_STATUS': False,
+    'ENABLE_SERVICE_STATUS': True,
 
     # Toggle to indicate use of a custom theme
     'USE_CUSTOM_THEME': False,
@@ -208,7 +208,7 @@ FEATURES = {
     'ENABLE_INSTRUCTOR_BACKGROUND_TASKS': True,
 
     # Enable instructor to assign individual due dates
-    'INDIVIDUAL_DUE_DATES': False,
+    'INDIVIDUAL_DUE_DATES': True,
 
     # Enable legacy instructor dashboard
     'ENABLE_INSTRUCTOR_LEGACY_DASHBOARD': True,
@@ -220,7 +220,7 @@ FEATURES = {
     'ENABLE_VERIFIED_CERTIFICATES': False,
 
     # Allow use of the hint managment instructor view.
-    'ENABLE_HINTER_INSTRUCTOR_VIEW': False,
+    'ENABLE_HINTER_INSTRUCTOR_VIEW': True,
 
     # for load testing
     'AUTOMATIC_AUTH_FOR_TESTING': False,
@@ -233,16 +233,16 @@ FEATURES = {
     'MULTIPLE_ENROLLMENT_ROLES': False,
 
     # Toggle the availability of the shopping cart page
-    'ENABLE_SHOPPING_CART': False,
+    'ENABLE_SHOPPING_CART': True,
 
     # Toggle storing detailed billing information
-    'STORE_BILLING_INFO': False,
+    'STORE_BILLING_INFO': True,
 
     # Enable flow for payments for course registration (DIFFERENT from verified student flow)
-    'ENABLE_PAID_COURSE_REGISTRATION': False,
+    'ENABLE_PAID_COURSE_REGISTRATION': True,
 
     # Enable the display of cosmetic course price display (set in course advanced settings)
-    'ENABLE_COSMETIC_DISPLAY_PRICE': False,
+    'ENABLE_COSMETIC_DISPLAY_PRICE': True,
 
     # Automatically approve student identity verification attempts
     'AUTOMATIC_VERIFY_STUDENT_IDENTITY_FOR_TESTING': False,
@@ -260,7 +260,7 @@ FEATURES = {
 
     # Give course staff unrestricted access to grade downloads (if set to False,
     # only edX superusers can perform the downloads)
-    'ALLOW_COURSE_STAFF_GRADE_DOWNLOADS': False,
+    'ALLOW_COURSE_STAFF_GRADE_DOWNLOADS': True,
 
     'ENABLED_PAYMENT_REPORTS': [
         "refund_report",
@@ -273,7 +273,7 @@ FEATURES = {
     'ENABLE_MAX_FAILED_LOGIN_ATTEMPTS': True,
 
     # Hide any Personally Identifiable Information from application logs
-    'SQUELCH_PII_IN_LOGS': True,
+    'SQUELCH_PII_IN_LOGS': False,
 
     # Toggles the embargo functionality, which blocks users from
     # the site or courses based on their location.
@@ -315,11 +315,11 @@ FEATURES = {
 
     # Expose Mobile REST API. Note that if you use this, you must also set
     # ENABLE_OAUTH2_PROVIDER to True
-    'ENABLE_MOBILE_REST_API': False,
-    'ENABLE_MOBILE_SOCIAL_FACEBOOK_FEATURES': False,
+    'ENABLE_MOBILE_REST_API': True,
+    'ENABLE_MOBILE_SOCIAL_FACEBOOK_FEATURES': True,
 
     # Enable the combined login/registration form
-    'ENABLE_COMBINED_LOGIN_REGISTRATION': False,
+    'ENABLE_COMBINED_LOGIN_REGISTRATION': True,
 
     # Enable organizational email opt-in
     'ENABLE_MKTG_EMAIL_OPT_IN': False,
@@ -327,7 +327,7 @@ FEATURES = {
     # Show a section in the membership tab of the instructor dashboard
     # to allow an upload of a CSV file that contains a list of new accounts to create
     # and register for course.
-    'ALLOW_AUTOMATED_SIGNUPS': False,
+    'ALLOW_AUTOMATED_SIGNUPS': True,
 
     # Display demographic data on the analytics tab in the instructor dashboard.
     'DISPLAY_ANALYTICS_DEMOGRAPHICS': True,
@@ -763,7 +763,7 @@ STATICFILES_DIRS = [
 FAVICON_PATH = 'images/favicon.ico'
 
 # Locale/Internationalization
-TIME_ZONE = 'Egypt'  # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+TIME_ZONE = 'Africa/Cairo'  # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 LANGUAGE_CODE = 'ar'  # http://www.i18nguy.com/unicode/language-identifiers.html
 # these languages display right to left
 LANGUAGES_BIDI = ("en@rtl", "he", "ar", "fa", "ur", "fa-ir")
