@@ -16,10 +16,21 @@
 //@include font-face('Droid Kufi', '../fonts/DroidKufi/DroidKufi-Bold', 700);
 //@include font-face('Droid Kufi', '../fonts/DroidKufi/DroidKufi-Regular', 400);
 
-@include font-face('Din Next', '../fonts/DINNext/DINNextLTArabic-Light', 300);
-@include font-face('Din Next', '../fonts/DINNext/DinTextArabic-Bold', 700);
+//@include font-face('Din Next', '../fonts/DINNext/DINNextLTArabic-Light', 300);
+//@include font-face('Din Next', '../fonts/DINNext/DinTextArabic-Bold', 700);
 
-@include font-face('Noto Kufi', '../fonts/NotoKufi/NotoKufiArabic-Bold', 700);
-@include font-face('Noto Kufi', '../fonts/NotoKufi/NotoKufiArabic-Regular', 400);
+//@include font-face('Noto Kufi', '../fonts/NotoKufi/NotoKufiArabic-Bold', 700);
+//@include font-face('Noto Kufi', '../fonts/NotoKufi/NotoKufiArabic-Regular', 400);
 
+@font-face {
+  font-family: 'Din Next';
+  src: url('../fonts/DINNext/DINNextLTArabic-Light.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Din Next';
+  src: url('../fonts/DINNext/DinTextArabic-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
 
