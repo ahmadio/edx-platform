@@ -132,9 +132,9 @@ FEATURES = {
 
     # extrernal access methods
     'ACCESS_REQUIRE_STAFF_FOR_COURSE': False,
-    'AUTH_USE_OPENID': False,
+    'AUTH_USE_OPENID': True,
     'AUTH_USE_CERTIFICATES': False,
-    'AUTH_USE_OPENID_PROVIDER': False,
+    'AUTH_USE_OPENID_PROVIDER': True,
     # Even though external_auth is in common, shib assumes the LMS views / urls, so it should only be enabled
     # in LMS
     'AUTH_USE_SHIB': False,
@@ -152,7 +152,7 @@ FEATURES = {
     'ENABLE_XBLOCK_VIEW_ENDPOINT': True,
 
     # Allows to configure the LMS to provide CORS headers to serve requests from other domains
-    'ENABLE_CORS_HEADERS': True,
+    'ENABLE_CORS_HEADERS': False,
 
     # Can be turned off if course lists need to be hidden. Effects views and templates.
     'COURSES_ARE_BROWSABLE': True,
@@ -289,7 +289,7 @@ FEATURES = {
 
     # Turn on third-party auth. Disabled for now because full implementations are not yet available. Remember to syncdb
     # if you enable this; we don't create tables by default.
-    'ENABLE_THIRD_PARTY_AUTH': False,
+    'ENABLE_THIRD_PARTY_AUTH': True,
 
     # Toggle to enable alternate urls for marketing links
     'ENABLE_MKTG_SITE': False,
@@ -1667,6 +1667,9 @@ INSTALLED_APPS = (
     'cors_csrf',
 
     'commerce',
+
+    # social auth
+    'social.apps.django_app.default',
 )
 
 ######################### CSRF #########################################
