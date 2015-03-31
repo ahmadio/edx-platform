@@ -5,6 +5,16 @@
 //   overflow-y: scroll;
 // }
 
+// switching fonts
+@include rtl {
+  $sans-serif: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+}
+
+@include ltr {
+  $sans-serif: 'Open Sans', 'Din Next', $verdana, sans-serif;
+}
+
+
 html, body {
   font-family: $sans-serif;
   font-size: 1em;
