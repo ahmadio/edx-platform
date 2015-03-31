@@ -2642,7 +2642,7 @@ msgid ""
 msgstr ""
 "جرى بنجاح إدراج رسالتك ضمن الرسائل التي يُنتظر إرسالها. الرجاء أخذ العلم "
 "بأنّه في حالة الصفوف الكبيرة، قد يستغرق إرسال كافة الرسائل حوالي ساعة (أو "
-"أكثر في حال كانت المساقات الأخرى ترسل رسائل في الوقت نفسه). "
+"أكثر في حال كانت المقررات الأخرى ترسل رسائل في الوقت نفسه). "
 
 #: lms/static/coffee/src/instructor_dashboard/send_email.js
 msgid "Error sending email."
@@ -4865,7 +4865,7 @@ msgstr "أنت الآن مسجِّل كطالب موثَّق لدى: "
 
 #: lms/templates/verify_student/enrollment_confirmation_step.underscore
 msgid "A list of courses you have just enrolled in as a verified student"
-msgstr "قائمة المساقات التي سجّلت فيها لتوّك كطالب موثَّق "
+msgstr "قائمة المقررات التي سجّلت فيها لتوّك كطالب موثَّق "
 
 #: lms/templates/verify_student/enrollment_confirmation_step.underscore
 msgid "Course"
@@ -5042,7 +5042,7 @@ msgid ""
 "your inbox for an activation email. After you complete activation you can "
 "return and refresh this page."
 msgstr ""
-"تحتاج إلى تفعيل حسابك قبل أن تتمكّن من التسجيل في المساقات. لذا يُرجى تفقّد "
+"تحتاج إلى تفعيل حسابك قبل أن تتمكّن من التسجيل في المقررات. لذا يُرجى تفقّد "
 "صندوق بريدك الإلكتروني حيث ستردك رسالة تفعيل. وبعد أن تنتهي من التفعيل، "
 "يمكنك العودة وإعادة فتح هذه الصفحة. "
 
@@ -5199,7 +5199,7 @@ msgid ""
 "You need to activate your account before you can enroll in courses. Check "
 "your inbox for an activation email."
 msgstr ""
-"تحتاج إلى تفعيل حسابك قبل أن تتمكّن من التسجيل في المساقات. لذا يُرجى تفقّد "
+"تحتاج إلى تفعيل حسابك قبل أن تتمكّن من التسجيل في المقررات. لذا يُرجى تفقّد "
 "صندوق بريدك الإلكتروني حيث ستردك رسالة تفعيل. "
 
 #: lms/templates/verify_student/payment_confirmation_step.underscore
@@ -5540,7 +5540,7 @@ msgstr "إجمالي التمارين المعيّنة"
 
 #: cms/templates/js/course_grade_policy.underscore
 msgid "Number of Droppable"
-msgstr "عدد المساقات التي يمكن حذفها"
+msgstr "عدد المقررات التي يمكن حذفها"
 
 #: cms/templates/js/course_grade_policy.underscore
 msgid "total exercises that won't be graded"
@@ -5947,7 +5947,7 @@ msgstr ""
 
 #: cms/templates/js/mock/mock-index-page.underscore
 msgid "Courses"
-msgstr "المساقات"
+msgstr "المقررات"
 
 #: cms/templates/js/mock/mock-index-page.underscore
 msgid "Libraries"

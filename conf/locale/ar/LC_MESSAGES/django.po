@@ -2134,7 +2134,7 @@ msgstr ""
 msgid ""
 "Enter the name of the course as it should appear in the edX.org course list."
 msgstr ""
-"يُرجى إدخال اسم المساق كما يجب أن يظهر في قائمة المساقات على موقع edX.org."
+"يُرجى إدخال اسم المساق كما يجب أن يظهر في قائمة المقررات على موقع edX.org."
 
 #: common/lib/xmodule/xmodule/course_module.py
 msgid "Course Display Name"
@@ -2255,7 +2255,7 @@ msgid ""
 "Enter true or false. If true, the course appears in the list of new courses "
 "on edx.org, and a New! badge temporarily appears next to the course image."
 msgstr ""
-"يُرجى إدخال صحيح أو خاطئ. ويسمح اختيارك لصحيح بظهور المساق في قائمة المساقات"
+"يُرجى إدخال صحيح أو خاطئ. ويسمح اختيارك لصحيح بظهور المساق في قائمة المقررات"
 " الجديدة على موقع edx.org، وظهور إشارة جديد! مؤقّتًا بجانب صورة المساق."
 
 #: common/lib/xmodule/xmodule/course_module.py
@@ -2518,7 +2518,7 @@ msgid ""
 "useful. To do this, create a section and set the release date to the distant"
 " future."
 msgstr ""
-"يجد بعض مؤلّفي المساقات أنّه من المفيد استخدام قسم للأعمال غير المرتّبة "
+"يجد بعض مؤلّفي المقررات أنّه من المفيد استخدام قسم للأعمال غير المرتّبة "
 "والتي تكون قيد الإنجاز. لفعل هذا، يُرجى إنشاء قسم وضبط تاريخ إصداره في "
 "المستقبل البعيد."
 
@@ -2582,7 +2582,7 @@ msgid ""
 " and more. Draft the text students will read before deciding to enroll in "
 "your course."
 msgstr ""
-"تتضمّن المساقات الموجودة على منصّة edX صفحة \"لمحة عن المساق\" وفيها فيديو "
+"تتضمّن المقررات الموجودة على منصّة edX صفحة \"لمحة عن المساق\" وفيها فيديو "
 "ووصف للمساق وغير ذلك. يُرجى صياغة النص الذي سيقرأه الطلّاب قبل اتخاذ قرارهم "
 "بالتسجيل في مساقك."
 
@@ -2866,7 +2866,7 @@ msgid ""
 "access to about page), 'about' (only allow access to about page), 'none' (do"
 " not show in catalog and do not allow access to an about page)."
 msgstr ""
-"تحدِّد هذه القيمة صلاحيات الدخول لعرض المساق في قائمة المساقات، ويمكن ضبطها "
+"تحدِّد هذه القيمة صلاحيات الدخول لعرض المساق في قائمة المقررات، ويمكن ضبطها "
 "باختيار أحد ثلاث خيارات: ’كلاهما‘ (العرض في القائمة، والسماح بالدخول إلى "
 "صفحة اللمحة عن المساق)، ’لمحة عن‘ (السماح فقط بالدخول إلى صفحة اللمحة عن "
 "المساق)، ’لا شيء‘ (عدم العرض في القائمة، ومنع الدخول إلى صفحة اللمحة عن "
@@ -5055,7 +5055,7 @@ msgstr "العدد الإجمالي للمستخدمين"
 
 #: lms/djangoapps/dashboard/sysadmin.py
 msgid "Courses loaded in the modulestore"
-msgstr "جرى تحميل المساقات في مخزن الوحدات"
+msgstr "جرى تحميل المقررات في مخزن الوحدات"
 
 #: lms/djangoapps/dashboard/sysadmin.py lms/templates/tracking_log.html
 msgid "username"
@@ -5162,7 +5162,7 @@ msgstr "المحرّر الأخير"
 
 #: lms/djangoapps/dashboard/sysadmin.py
 msgid "Information about all courses"
-msgstr "معلومات عن جميع المساقات"
+msgstr "معلومات عن جميع المقررات"
 
 #: lms/djangoapps/dashboard/sysadmin.py
 msgid "Error - cannot get course with ID {0}<br/><pre>{1}</pre>"
@@ -5192,7 +5192,7 @@ msgstr "الأساتذة"
 
 #: lms/djangoapps/dashboard/sysadmin.py
 msgid "Enrollment information for all courses"
-msgstr "معلومات التسجيل الخاصة بكافة المساقات"
+msgstr "معلومات التسجيل الخاصة بكافة المقررات"
 
 #: lms/djangoapps/dashboard/sysadmin.py
 msgid "role"
@@ -5565,7 +5565,7 @@ msgid ""
 " {analytics_dashboard_name}, our new course analytics product{link_end}."
 msgstr ""
 "لمزيدٍ من المعلومات حول تسجيل الطلّاب ومشاركتهم، يُرجى {link_start}زيارة "
-"{analytics_dashboard_name}، منتجنا الجديد لتحليلات المساقات{link_end}."
+"{analytics_dashboard_name}، منتجنا الجديد لتحليلات المقررات{link_end}."
 
 #: lms/djangoapps/instructor/views/instructor_dashboard.py
 msgid "E-Commerce"
@@ -6221,7 +6221,7 @@ msgstr "تأكيد دفع ثمن الطلب"
 msgid ""
 "Confirmation and Registration Codes for the following courses: "
 "{course_name_list}"
-msgstr "رموز التأكيد والتسجيل الخاصة بالمساقات التالية: {course_name_list}"
+msgstr "رموز التأكيد والتسجيل الخاصة بالمقررات التالية: {course_name_list}"
 
 #: lms/djangoapps/shoppingcart/models.py
 msgid "Trying to add a different currency into the cart"
@@ -8636,7 +8636,7 @@ msgstr "رقم المساق: "
 #: lms/templates/sysadmin_dashboard_gitlogs.html
 #: lms/templates/courseware/courses.html
 msgid "Courses"
-msgstr "المساقات"
+msgstr "المقررات"
 
 #: cms/templates/login.html cms/templates/register.html
 #: lms/templates/help_modal.html lms/templates/login.html
@@ -8897,7 +8897,7 @@ msgstr "إعادة ضبط كلمة السر"
 
 #: lms/templates/dashboard.html
 msgid "Current Courses"
-msgstr "المساقات الحالية"
+msgstr "المقررات الحالية"
 
 #: lms/templates/dashboard.html
 msgid "Looks like you haven't enrolled in any courses yet."
@@ -8905,11 +8905,11 @@ msgstr "يبدو أنّك لم تسجِّل في أي مساق حتى الآن."
 
 #: lms/templates/dashboard.html
 msgid "Find courses now!"
-msgstr "استكشف المساقات الآن!"
+msgstr "استكشف المقررات الآن!"
 
 #: lms/templates/dashboard.html
 msgid "Course-loading errors"
-msgstr "الأخطاء الخاصة بتحميل المساقات "
+msgstr "الأخطاء الخاصة بتحميل المقررات "
 
 #: lms/templates/dashboard.html
 msgid "Email Settings for {course_number}"
@@ -9655,7 +9655,7 @@ msgstr "كيفية العمل"
 
 #: lms/templates/navigation-edx.html lms/templates/navigation.html
 msgid "Find Courses"
-msgstr "إيجاد المساقات"
+msgstr "إيجاد المقررات"
 
 #: lms/templates/navigation-edx.html
 msgid "Schools & Partners"
@@ -9825,8 +9825,8 @@ msgid ""
 "you on our mailing list - we will update you as courses are added."
 msgstr ""
 "يمنحك التسجيل في {platform_name} صلاحية الدخول إلى جميع مساقاتنا المجّانية "
-"الحالية والمستقبلية. ألم تستعدّ بعد للتسجيل في أحد المساقات؟ يضعك التسجيل "
-"على قائمة مراسلاتنا، بحيث سنبقيك على اطّلاع على المساقات التي تُضاف."
+"الحالية والمستقبلية. ألم تستعدّ بعد للتسجيل في أحد المقررات؟ يضعك التسجيل "
+"على قائمة مراسلاتنا، بحيث سنبقيك على اطّلاع على المقررات التي تُضاف."
 
 #: lms/templates/register-sidebar.html
 msgid "Next Steps"
@@ -10204,7 +10204,7 @@ msgstr "تنزيل قائمة بطاقم المساق وأساتذته (ملف �
 
 #: lms/templates/sysadmin_dashboard.html
 msgid "Administer Courses"
-msgstr "إدارة المساقات"
+msgstr "إدارة المقررات"
 
 #. Translators: Repo is short for git repository or source of
 #. courseware; see http://git-scm.com/about
@@ -11010,11 +11010,11 @@ msgstr ""
 
 #: lms/templates/courseware/courses.html
 msgid "Explore free courses from {university_name}."
-msgstr "استكشف المساقات المجّانية التي تقدّمها {university_name}."
+msgstr "استكشف المقررات المجّانية التي تقدّمها {university_name}."
 
 #: lms/templates/courseware/courses.html
 msgid "Explore courses from {platform_name}."
-msgstr "استكشف المساقات التي تقدّمها {platform_name}."
+msgstr "استكشف المقررات التي تقدّمها {platform_name}."
 
 #: lms/templates/courseware/courses.html
 msgid "{platform_name} Logo"
@@ -11180,7 +11180,7 @@ msgid ""
 "have disabled those features for courses with more than {max_enrollment} "
 "students."
 msgstr ""
-"ملاحظة: تُعرف بعض هذه الأزرار بأنّها تعمل ضمن مهلة محدودة في المساقات الأكبر"
+"ملاحظة: تُعرف بعض هذه الأزرار بأنّها تعمل ضمن مهلة محدودة في المقررات الأكبر"
 " حجمًا. وقد عطّلنا هذه الخصائص للمساقات التي تحوي أكثر من {max_enrollment} "
 "طالب."
 
@@ -11372,7 +11372,7 @@ msgid ""
 "Student distribution per country, all courses, Sep 12 to Oct 17, 1 server "
 "(shown here as an example):"
 msgstr ""
-" توزيع الطلّاب في كل بلد، بالنسبة لكافة المساقات، بين 12 سبتمبر و17 أكتوبر، "
+" توزيع الطلّاب في كل بلد، بالنسبة لكافة المقررات، بين 12 سبتمبر و17 أكتوبر، "
 "عبر الخادم 1 (بالشكل الموضَّح هنا كمثال):"
 
 #: lms/templates/courseware/legacy_instructor_dashboard.html
@@ -12713,7 +12713,7 @@ msgid ""
 "To enroll in ${course_names} we have provided a registration URL for you.  "
 "Please follow the instructions below to claim your access."
 msgstr ""
-"للتسجيل في المساقات ${course_names}، أعددنا لك رابط تسجيل، ويُرجى منك اتباع "
+"للتسجيل في المقررات ${course_names}، أعددنا لك رابط تسجيل، ويُرجى منك اتباع "
 "التعليمات التالية لتتمكّن من الدخول."
 
 #: lms/templates/emails/business_order_confirmation_email.txt
@@ -13080,7 +13080,7 @@ msgstr ""
 #: lms/templates/emails/remove_beta_tester_email_message.txt
 #: lms/templates/emails/unenroll_email_enrolledmessage.txt
 msgid "Your other courses have not been affected."
-msgstr "لم يؤثر ذلك على باقي المساقات."
+msgstr "لم يؤثر ذلك على باقي المقررات."
 
 #: lms/templates/emails/remove_beta_tester_email_subject.txt
 msgid "You have been removed from a beta test for {course_name}"
@@ -14395,7 +14395,7 @@ msgid ""
 " visible to courses with a small number of total enrolled students."
 msgstr ""
 "الرجاء النقر هنا لعرض سجل الدرجات الخاص بالطلاب المسجّلين. يمكن رؤية هذه "
-"الميزة فقط في المساقات التي يكون عدد الطلاب المسجلّين فيها قليلًا."
+"الميزة فقط في المقررات التي يكون عدد الطلاب المسجلّين فيها قليلًا."
 
 #: lms/templates/instructor/instructor_dashboard_2/student_admin.html
 msgid "View Gradebook"
@@ -14804,7 +14804,7 @@ msgid ""
 msgstr ""
 "لقد أنشأت حسابك بنجاح على {platform_name}، وقد أرسلنا رسالة إلكترونية لتفعيل"
 " الحساب {email}، انقر على الرابط الموجود في الرسالة لتفعيل حسابك والبدء "
-"بالتسجيل في المساقات."
+"بالتسجيل في المقررات."
 
 #: lms/templates/registration/activation_complete.html
 msgid "Activation Complete!"
@@ -14902,7 +14902,7 @@ msgstr "إنّ عربة تسوّقك فارغة حاليًا."
 #: lms/templates/shoppingcart/billing_details.html
 #: lms/templates/shoppingcart/shopping_cart.html
 msgid "View Courses"
-msgstr "عرض المساقات"
+msgstr "عرض المقررات"
 
 #: lms/templates/shoppingcart/download_report.html
 msgid "Download CSV Data"
@@ -15191,7 +15191,7 @@ msgstr ""
 #: lms/templates/shoppingcart/shopping_cart.html
 msgid ""
 "{course_names} has been removed because the enrollment period has closed."
-msgstr "أُزيلَت المساقات {course_names} لأنّ فترة التسجيل فيها قد انتهت."
+msgstr "أُزيلَت المقررات {course_names} لأنّ فترة التسجيل فيها قد انتهت."
 
 #: lms/templates/shoppingcart/shopping_cart.html
 msgid "Registration for:"
@@ -16183,7 +16183,7 @@ msgid ""
 "{studio_name} to author courses."
 msgstr ""
 "شكرًا لك على تفعيل حسابك. يمكنك الآن تسجيل دخولك والبدء باستخدام "
-"{studio_name} لتأليف المساقات. "
+"{studio_name} لتأليف المقررات. "
 
 #: cms/templates/activation_invalid.html
 msgid "Your account activation is invalid"
@@ -16462,7 +16462,7 @@ msgstr "إنشاء ’تشغيل ثانٍ للمساق‘ لـ:"
 
 #: cms/templates/course-create-rerun.html
 msgid "Create a re-run of a course"
-msgstr "إنشاء تشغيل ثانٍ لأحد المساقات"
+msgstr "إنشاء تشغيل ثانٍ لأحد المقررات"
 
 #: cms/templates/course-create-rerun.html
 msgid "You are creating a re-run from:"
@@ -16930,7 +16930,7 @@ msgstr ""
 
 #: cms/templates/export.html
 msgid "About Exporting Courses"
-msgstr "حول تصدير المساقات"
+msgstr "حول تصدير المقررات"
 
 #. Translators: ".tar.gz" is a file extension, and should not be translated
 #: cms/templates/export.html
@@ -16940,9 +16940,9 @@ msgid ""
 "contains the course structure and content. You can also re-import courses "
 "that you've exported."
 msgstr ""
-"يمكنك تصدير المساقات وتعديلها خارج استوديو {studio_name}. ويحمل الملفّ "
+"يمكنك تصدير المقررات وتعديلها خارج استوديو {studio_name}. ويحمل الملفّ "
 "المصدَّر امتداد .tar.gz (أي ملف .tar مضغوط ببرنامج GNU Zip) ويحتوي على هيكل "
-"المساق ومحتواه. كما يمكنك إعادة استيراد المساقات التي صدّرتها.  "
+"المساق ومحتواه. كما يمكنك إعادة استيراد المقررات التي صدّرتها.  "
 
 #: cms/templates/export.html
 msgid ""
@@ -17095,7 +17095,7 @@ msgstr ""
 
 #: cms/templates/export.html
 msgid "Learn more about exporting a course"
-msgstr "تعلّم المزيد عن تصدير المساقات"
+msgstr "تعلّم المزيد عن تصدير المقررات"
 
 #: cms/templates/export_git.html
 msgid "Export Course to Git"
@@ -17864,7 +17864,7 @@ msgstr ""
 
 #: cms/templates/index.html
 msgid "Courses Being Processed"
-msgstr "المساقات الجاري معالجتها"
+msgstr "المقررات الجاري معالجتها"
 
 #: cms/templates/index.html
 msgid "Course Run:"
@@ -17889,7 +17889,7 @@ msgid ""
 " new course will need some manual configuration."
 msgstr ""
 "سيُضاف المساق الجديد إلى لائحة مساقاتك في غضون 5-10 دقائق. يُرجى العودة إلى "
-"هذه الصفحة أو {link_start}إعادة فتحها{link_end}  لتحديث لائحة المساقات. "
+"هذه الصفحة أو {link_start}إعادة فتحها{link_end}  لتحديث لائحة المقررات. "
 "وسيتطلّب المساق الجديد ضبط بعض الإعدادات يدويًّا."
 
 #: cms/templates/index.html
@@ -17940,7 +17940,7 @@ msgid ""
 "during the work week."
 msgstr ""
 "يُعدّ {studio_name} حلًّا مستضافًا لشركائنا من xConsortium ولبعض الضيوف. "
-"وتظهر أعلاه المساقات التي أنت عضو فيها ويمكنك تعديلها، في حين أنّ صلاحيات "
+"وتظهر أعلاه المقررات التي أنت عضو فيها ويمكنك تعديلها، في حين أنّ صلاحيات "
 "منشئ المساق تمنحها المنصّة {platform_name}. وسوف يقيِّم فريقنا طلبك ويزوّدك "
 "بالملاحظات والآراء في غضون 24 ساعة خلال أسبوع العمل.   "
 
@@ -17950,7 +17950,7 @@ msgstr "حالة الطلب الذي تقدّمت به لتسجيلك كمُنش
 
 #: cms/templates/index.html
 msgid "Request the Ability to Create Courses"
-msgstr "طلب صلاحية إنشاء المساقات"
+msgstr "طلب صلاحية إنشاء المقررات"
 
 #: cms/templates/index.html
 msgid "Your Course Creator Request Status"
@@ -17964,7 +17964,7 @@ msgid ""
 "team is has completed evaluating your request."
 msgstr ""
 "يُعدّ {studio_name} حلًّا مستضافًا لشركائنا من xConsortium ولبعض الضيوف. "
-"وتظهر أعلاه المساقات التي أنت عضو فيها ويمكنك تعديلها، في حين أنّ صلاحيات "
+"وتظهر أعلاه المقررات التي أنت عضو فيها ويمكنك تعديلها، في حين أنّ صلاحيات "
 "منشئ المساق تمنحها المنصّة {platform_name}. يُرجى ملاحظة أنّ فريقنا قد "
 "استكمل تقييم طلبك."
 
@@ -17992,7 +17992,7 @@ msgid ""
 "team is currently  evaluating your request."
 msgstr ""
 "يُعدّ {studio_name} حلًّا مستضافًا لشركائنا من xConsortium ولبعض الضيوف. "
-"وتظهر أعلاه المساقات التي أنت عضو فيها ويمكنك تعديلها، في حين أنّ صلاحيات "
+"وتظهر أعلاه المقررات التي أنت عضو فيها ويمكنك تعديلها، في حين أنّ صلاحيات "
 "منشئ المساق تمنحها المنصّة {platform_name}. يُرجى ملاحظة أنّ فريقنا يقوم "
 "حاليًّا بتقييم طلبك."
 
@@ -18132,7 +18132,7 @@ msgid ""
 "Add components to your library for use in courses, using Add New Component "
 "at the bottom of this page."
 msgstr ""
-"إضافة مكوِّنات إلى مكتبتك لاستخدامها في المساقات، وذلك من خلال \"إضافة "
+"إضافة مكوِّنات إلى مكتبتك لاستخدامها في المقررات، وذلك من خلال \"إضافة "
 "مكوِّن جديد\" في أسفل هذه الصفحة. "
 
 #: cms/templates/library.html
@@ -18147,7 +18147,7 @@ msgstr ""
 
 #: cms/templates/library.html
 msgid "Using library content in courses"
-msgstr "استخدام محتوى المكتبة في المساقات"
+msgstr "استخدام محتوى المكتبة في المقررات"
 
 #: cms/templates/library.html
 msgid ""
@@ -18431,7 +18431,7 @@ msgstr "أوافق على {a_start} شروط الخدمة  {a_end}"
 
 #: cms/templates/register.html
 msgid "Create My Account &amp; Start Authoring Courses"
-msgstr "إنشاء حسابي والبدء بتأليف المساقات"
+msgstr "إنشاء حسابي والبدء بتأليف المقررات"
 
 #: cms/templates/register.html
 msgid "Common {studio_name} Questions"
@@ -18775,7 +18775,7 @@ msgid ""
 msgstr ""
 "هناك معلومات أخرى في هذه الصفحة تَظهر على صفحة النبذة عن مساقك، وتتضمّن نظرة"
 " عامة عن المساق، وصورة المساق، ومقطع فيديو خاص بالمقدّمة، ومتطلّبات الوقت "
-"التقريبية. ويستخدم الطلّاب صفحات النبذة لاختيار المساقات الجديدة التي "
+"التقريبية. ويستخدم الطلّاب صفحات النبذة لاختيار المقررات الجديدة التي "
 "سيلتحقون بها."
 
 #: cms/templates/settings_advanced.html
@@ -19126,7 +19126,7 @@ msgstr ""
 msgid "To grant or deny this request, use the course creator admin table."
 msgstr ""
 "للموافقة على هذا الطلب أو رفضه، يُرجى استخدام جدول المشرفين على مُنشئي "
-"المساقات. "
+"المقررات. "
 
 #: cms/templates/emails/course_creator_denied.txt
 msgid ""
