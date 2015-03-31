@@ -111,7 +111,7 @@ FEATURES = {
     'ADVANCED_SECURITY': False,
 
     # Turn off Video Upload Pipeline through Studio, by default
-    'ENABLE_VIDEO_UPLOAD_PIPELINE': False,
+    'ENABLE_VIDEO_UPLOAD_PIPELINE': True,
 
 
     # Is this an edX-owned domain? (edx.org)
@@ -122,23 +122,23 @@ FEATURES = {
     # let students save and manage their annotations
     # for consistency in user-experience, keep the value of this feature flag
     # in sync with the one in lms/envs/common.py
-    'ENABLE_EDXNOTES': False,
+    'ENABLE_EDXNOTES': True,
 
     # Enable support for content libraries. Note that content libraries are
     # only supported in courses using split mongo.
     'ENABLE_CONTENT_LIBRARIES': True,
 
     # Milestones application flag
-    'MILESTONES_APP': False,
+    'MILESTONES_APP': True,
 
     # Prerequisite courses feature flag
-    'ENABLE_PREREQUISITE_COURSES': False,
+    'ENABLE_PREREQUISITE_COURSES': True,
 
     # Toggle course entrance exams feature
-    'ENTRANCE_EXAMS': False,
+    'ENTRANCE_EXAMS': True,
 
     # Enable the courseware search functionality
-    'ENABLE_COURSEWARE_INDEX': False,
+    'ENABLE_COURSEWARE_INDEX': True,
 
     # Enable course reruns, which will always use the split modulestore
     'ALLOW_COURSE_RERUNS': True,

@@ -152,7 +152,7 @@ FEATURES = {
     'ENABLE_XBLOCK_VIEW_ENDPOINT': True,
 
     # Allows to configure the LMS to provide CORS headers to serve requests from other domains
-    'ENABLE_CORS_HEADERS': False,
+    'ENABLE_CORS_HEADERS': True,
 
     # Can be turned off if course lists need to be hidden. Effects views and templates.
     'COURSES_ARE_BROWSABLE': True,
@@ -339,13 +339,13 @@ FEATURES = {
     'ENABLE_FOOTER_MOBILE_APP_LINKS': False,
 
     # Let students save and manage their annotations
-    'ENABLE_EDXNOTES': False,
+    'ENABLE_EDXNOTES': True,
 
     # Milestones application flag
-    'MILESTONES_APP': False,
+    'MILESTONES_APP': True,
 
     # Prerequisite courses feature flag
-    'ENABLE_PREREQUISITE_COURSES': False,
+    'ENABLE_PREREQUISITE_COURSES': True,
 
     # For easily adding modes to courses during acceptance testing
     'MODE_CREATION_FOR_TESTING': False,
@@ -360,7 +360,7 @@ FEATURES = {
     'ENABLE_VIDEO_BEACON': False,
 
     # Certificates Web/HTML Views
-    'CERTIFICATES_HTML_VIEW': False,
+    'CERTIFICATES_HTML_VIEW': True,
 }
 
 # Ignore static asset files on import which match this pattern
