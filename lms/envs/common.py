@@ -1671,6 +1671,9 @@ INSTALLED_APPS = (
 
     # social auth
     'social.apps.django_app.default',
+
+    # kashkool specific
+    'kashkool',
 )
 
 ######################### CSRF #########################################

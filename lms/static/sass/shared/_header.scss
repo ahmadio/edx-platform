@@ -33,6 +33,10 @@ header.global {
     @include float(left);
   }
 
+  .right {
+    @include float(right);
+  }
+
   .guest {
     @include float(right);
   }
@@ -258,7 +262,7 @@ header.global {
   .nav-global {
     margin-top: ($baseline/2);
     list-style: none;
-    @include float(left);
+    @include float(right);
 
     li,
     div {
@@ -503,14 +507,14 @@ header.global-new {
         width: 19px;
       }
       div {
-        margin-top: 3px;
+        @include rtl {
+          margin-top: 4px;
+        }
+        @include ltr {
+          margin-top: 3px;
+        }
         float: right;
-        margin-left: 4px;
-      }
-      div {
-        margin-top: 3px;
-        float: right;
-        margin-left: 4px;
+        @include margin-left(4px);
       }
 
       &:hover, &:focus {
