@@ -3,22 +3,34 @@
 
 .dashboard {
   @include clearfix();
-  padding: ($baseline*2) 0 0 0;
 
   .profile-sidebar {
+    @include clearfix();
     background: transparent;
-    @include float(left);
-    @include margin-right(flex-gutter());
-    width: flex-grid(3);
-    background: transparent;
-    box-shadow: 0 0 1px $shadow-l1;
+    //@include float(left);
+    //@include margin-right(flex-gutter());
+    width: flex-grid(12);
+    border-radius: ($baseline/4);
+    background: $dashboard-profile-color;
+    box-shadow: 0 2px 0 0 rgba(0,0,0,0.1);
 
-    header.profile {
+    .profile {
+      @include clearfix();
       @include box-sizing(border-box);
-      border: 1px solid $border-color-2;
-      border-radius: ($baseline/4) ($baseline/4) 0 0;
-      width: flex-grid(12);
-      background: $dashboard-profile-color;
+      width: flex-grid(7);
+      @include float(left);
+
+        .profile-img {
+          @include float(left);
+          max-width: flex-grid(2);
+          padding: 20px;
+          max-height: 100px;
+        }
+
+        .personal-info {
+          width: flex-grid(8);
+          @include float(right);
+        }
 
       h1.user-name {
         overflow: hidden;
@@ -32,19 +44,24 @@
       }
     }
 
-    .user-info {
+    .settings {
+      @include clearfix();
+      width: flex-grid(5);
+      @include float(right);
+    }
+
+    .info-section {
       @include clearfix();
 
       > ul {
         @include box-sizing(border-box);
         @include clearfix();
         margin: 0;
-        border: 1px solid $border-color-2;
-        border-top: none;
-        border-radius: 0 0 ($baseline/4) ($baseline/4);
+        // border: 1px solid $border-color-2;
+        // border-top: none;
+        // border-radius: 0 0 ($baseline/4) ($baseline/4);
         padding: $baseline;
         width: flex-grid(12);
-        background: $white;
 
         li {
           @include clearfix();
@@ -286,13 +303,44 @@
 
   // course listings
   .my-courses {
-    @include float(left);
-    margin: 0;
     width: flex-grid(9);
+    margin: 30px auto 0 auto;
+    @include rtl {
+      font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+    }
+
+    @include ltr {
+      font-family: 'Open Sans', 'Din Next', $verdana, sans-serif;
+    }
 
     > header {
-      border-bottom: 1px solid $border-color-2;
-      margin-bottom: ($baseline*1.5);
+      margin-bottom: 10px;
+
+      > h2 {
+        margin-bottom: 0;
+        @include rtl {
+          font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+        }
+
+        @include ltr {
+          font-family: 'Open Sans', 'Din Next', $verdana, sans-serif;
+        }
+      } 
+    }
+
+    .filter-toggle {
+      
+
+      &.active {
+        background: $dashboard-profile-color;
+        box-shadow: 0 2px 0 0 rgba(0,0,0,0.1);
+        padding: 5px;
+        border-radius: 5px;
+      }
+
+      a {
+        outline: none;
+      }
     }
 
     .empty-dashboard-message {
@@ -336,9 +384,17 @@
       @extend %ui-no-list;
 
       .course-item {
-        margin-bottom: ($baseline*2.5);
-        border-bottom: 4px solid $border-color-l4;
-        padding-bottom: ($baseline*2.5);
+        margin-bottom: 30px;
+        // border-bottom: 4px solid $border-color-l4;
+        padding: 20px;
+        border-radius: 5px;
+        background: $dashboard-profile-color;
+        box-shadow: 0 2px 0 0 rgba(0,0,0,0.1);
+        display: none;
+
+         &.shown {
+          display: block;
+        }
 
         &:last-child {
           margin-bottom: 0;
