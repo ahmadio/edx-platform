@@ -172,14 +172,16 @@ header.global {
         width: 19px;
       }
       div {
-        margin-top: 3px;
+        @include rtl {
+          margin-top: 4px;
+        }
+
+        @include ltr {
+          margin-top: 3px;
+        }
+
         float: right;
-        margin-left: 4px;
-      }
-      div {
-        margin-top: 3px;
-        float: right;
-        margin-left: 4px;
+        @include margin-left(4px);
       }
 
       &:hover, &:focus {

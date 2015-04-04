@@ -76,13 +76,11 @@
 <section class="container dashboard" id="dashboard-main">
 
   <section class="profile-sidebar">
-    <header class="profile">
-      <h1 class="user-name">${ user.username }</h1>
-    </header>
-    <section class="user-info">
-      <ul>
+    <section class="info-section profile">
+      <img class="profile-img" src="profile_img" alt="${ user.username }" onError="this.onerror=null;this.src='/static/images/vcert-ribbon-s.png';"/>
+      <ul class="personal-info">
         <li class="info--username">
-          <span class="title">${_("Full Name")} (<a href="#apply_name_change" rel="leanModal" class="edit-name">${_("edit")}</a>)</span> <span class="data">${ user.profile.name | h }</span>
+          <span class="title">${ user.username } ${_("Full Name")} (<a href="#apply_name_change" rel="leanModal" class="edit-name">${_("edit")}</a>)</span> <span class="data">${ user.profile.name | h }</span>
         </li>
         <li class="info--email">
           <span class="title">${_("Email")}
@@ -91,7 +89,10 @@
             % endif
           </span> <span class="data">${ user.email | h }</span>
         </li>
-
+      </ul>
+    </section>
+    <section class="info-section settings">
+      <ul>
         %if len(language_options) > 1:
         <%include file='dashboard/_dashboard_info_language.html' />
         %endif
@@ -175,8 +176,10 @@
   </section>
 
   <section id="my-courses" class="my-courses" role="main" aria-label="Content">
-    <header>
-    <h2>الحالية</h2>
+    <header class="clearfix">
+    <span class="filter-toggle current active"  data-filter="current"><a href="#">${_("Current")}</a></span>
+    <span class="filter-toggle past"  data-filter="past"><a href="#" >${_("past")}</a></span>
+   <span class="filter-toggle comming" data-filter="comming"><a href="#" >${_("comming")}</a></span>
     </header>
 
     % if len(course_enrollment_pairs) > 0:

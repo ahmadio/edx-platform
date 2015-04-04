@@ -440,7 +440,8 @@ OAUTH_OIDC_USERINFO_HANDLERS = (
 import tempfile
 MAKO_MODULE_DIR = os.path.join(tempfile.gettempdir(), 'mako_lms')
 MAKO_TEMPLATES = {}
-MAKO_TEMPLATES['main'] = [PROJECT_ROOT / 'templates',
+MAKO_TEMPLATES['main'] = [PROJECT_ROOT / 'templates/kashkool', # override mako search to put kashkool specific templates first
+                          PROJECT_ROOT / 'templates',
                           COMMON_ROOT / 'templates',
                           COMMON_ROOT / 'lib' / 'capa' / 'capa' / 'templates',
                           COMMON_ROOT / 'djangoapps' / 'pipeline_mako' / 'templates']
@@ -1368,6 +1369,10 @@ PIPELINE_JS = {
     'verify_student': {
         'source_filenames': verify_student_js,
         'output_filename': 'js/verify_student.js'
+    },
+    'kashkool': {
+        'source_filenames': ['js/kashkool/helpers.js'],
+        'output_filename': 'js/kashkool_helpers.js'
     }
 }
 
