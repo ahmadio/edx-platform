@@ -100,12 +100,12 @@ comming
         <h3>
           % if show_courseware_link:
              % if not is_course_blocked:
-            <a href="${course_target}">${course.display_number_with_default | h} ${course.display_name_with_default}</a>
+            <a href="${course_target}">${course.display_name_with_default}</a>
             % else:
-            <a class="disable-look">${course.display_number_with_default | h} ${course.display_name_with_default}</a>
+            <a class="disable-look">${course.display_name_with_default}</a>
             % endif
           % else:
-            <span>${course.display_number_with_default | h} ${course.display_name_with_default}</span>
+          <span>${course.display_name_with_default}</span>
           % endif
         </h3>
       </hgroup>
