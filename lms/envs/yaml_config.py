@@ -80,8 +80,8 @@ CAS_ATTRIBUTE_CALLBACK = None
 
 ##### Defaults for OAUTH2 Provider ##############
 OAUTH_OIDC_ISSUER = None
-OAUTH_ENFORCE_SECURE = True
-OAUTH_ENFORCE_CLIENT_SECURE = True
+OAUTH_ENFORCE_SECURE = False
+OAUTH_ENFORCE_CLIENT_SECURE = False
 
 #### Course Registration Code length ####
 REGISTRATION_CODE_LENGTH = 8
