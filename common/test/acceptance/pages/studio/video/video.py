@@ -53,14 +53,14 @@ DISPLAY_NAME = "Component Display Name"
 DEFAULT_SETTINGS = [
     # basic
     [DISPLAY_NAME, 'Video', False],
-    ['Default Video URL', 'http://youtu.be/3_yD_cEKoCk, , ', False],
+    ['Default Video URL', 'https://youtu.be/Hrd0NiWMIjk, , ', False],
 
     # advanced
     [DISPLAY_NAME, 'Video', False],
     ['Default Timed Transcript', '', False],
     ['Download Transcript Allowed', 'False', False],
     ['Downloadable Transcript URL', '', False],
-    ['EdX Video ID', '', False],
+    # ['EdX Video ID', '', False],
     ['Show Transcript', 'True', False],
     ['Transcript Languages', '', False],
     ['Upload Handout', '', False],

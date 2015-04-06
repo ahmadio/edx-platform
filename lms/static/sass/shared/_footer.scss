@@ -51,7 +51,7 @@
 
         li {
           @include float(left);
-          margin-right: ($baseline*0.75);
+          @include margin-right($baseline*0.75);
 
           a {
             color: tint($black, 20%);
@@ -62,7 +62,7 @@
           }
 
           &:last-child {
-            margin-right: 0;
+            @include margin-right(0);
           }
         }
       }
@@ -73,15 +73,15 @@
         img {
           width: 68px;
           height: 34px;
-          margin-right: 0;
+          @include margin-right(0);
           float: left;
         }
 
         p {
-          float: left;
+          @include float(left);
           width: flex-grid(6,8);
-          margin-left: $baseline;
-          padding-left: $baseline;
+          @include margin-left($baseline);
+          @include padding-left($baseline);
           font-size: em(13);
           background: transparent url(/static/images/bg-footer-divider.jpg) 0 0 no-repeat;
         }

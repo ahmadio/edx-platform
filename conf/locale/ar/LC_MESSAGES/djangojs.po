@@ -3722,7 +3722,7 @@ msgid ""
 "{email} is already on the {course} team. Recheck the email address if you "
 "want to add a new member."
 msgstr ""
-"يوجد هذا البريد الإلكتروني {email} مسبقًا في فريق مساق {course}. يُرجى إعادة"
+"يوجد هذا البريد الإلكتروني {email} مسبقًا في فريق مقرر {course}. يُرجى إعادة"
 " التحقّق من عنوان البريد الإلكتروني إذا أردت أن تضيف عضوًا جديدًا. "
 
 #: cms/static/js/factories/manage_users.js
@@ -3856,7 +3856,7 @@ msgstr "هناك إشكالات في المصادقة على هذا المكوّ
 
 #: cms/static/js/models/settings/course_details.js
 msgid "The course must have an assigned start date."
-msgstr "يجب أن يكون للمساق تاريخ بدء معيّن."
+msgstr "يجب أن يكون للمقرر تاريخ بدء معيّن."
 
 #: cms/static/js/models/settings/course_details.js
 msgid "The course end date cannot be before the course start date."
@@ -4005,7 +4005,7 @@ msgstr ""
 #: cms/static/js/views/group_configuration_details.js
 #: cms/templates/js/mock/mock-settings-page.underscore
 msgid "Course Outline"
-msgstr "المخطّط الكلّي للمساق"
+msgstr "المخطّط الكلّي للمقرر"
 
 #. Translators: This refers to a content group that can be linked to a student
 #. cohort.
@@ -4877,7 +4877,7 @@ msgstr "يبدأ: %(start)s"
 
 #: lms/templates/verify_student/enrollment_confirmation_step.underscore
 msgid "Explore your course!"
-msgstr "استكشف مساقك!"
+msgstr "استكشف مقررك!"
 
 #: lms/templates/verify_student/enrollment_confirmation_step.underscore
 msgid "Go to your Dashboard"
@@ -4895,7 +4895,7 @@ msgid ""
 "submit photos for verification again."
 msgstr ""
 "شكرًا لك على تقديم صورك. سنراجعها قريبًا. ويمكنك الآن تسجيل عضويتك في أيً من"
-" مساقات %(platformName)s التي تمنح شهادات موثَّّقة. وبينما يسري مفعول عملية "
+" مقررات %(platformName)s التي تمنح شهادات موثَّّقة. وبينما يسري مفعول عملية "
 "التحقّق لمدّة عام، يجب أن تقدّم الصور للتحقّق منها مجدّدًا بعد انقضاء العام."
 " "
 
@@ -5216,7 +5216,7 @@ msgid ""
 "from your dashboard. You will receive periodic reminders from "
 "%(platformName)s to verify your identity."
 msgstr ""
-"إذا لم تؤكّد هويّتك الآن، سيبقى بإمكانك استكشاف مساقك من خلال لوحة معلوماتك."
+"إذا لم تؤكّد هويّتك الآن، سيبقى بإمكانك استكشاف مقررك من خلال لوحة معلوماتك."
 " وستتلقّى رسائل تذكيرية دوريًّا من %(platformName)s لتأكيد هويّتك. "
 
 #: lms/templates/verify_student/payment_confirmation_step.underscore
@@ -5559,7 +5559,7 @@ msgid ""
 "There is invalid code in your content. Please check to make sure it is valid"
 " HTML."
 msgstr ""
-"هناك تعليمات برمجية غير صحيحة في محتوى مساقك. يُرجى التحقّق للتأكّد من "
+"هناك تعليمات برمجية غير صحيحة في محتوى مقررك. يُرجى التحقّق للتأكّد من "
 "كتابتها بلغة HTML صحيحة."
 
 #: cms/templates/js/due-date-editor.underscore
@@ -5919,7 +5919,7 @@ msgid ""
 "course settings:"
 msgstr ""
 "يُرجى التحقّق من الملاحظات والتعليقات التالية بشأن التحقّق، وتطبيقها على "
-"الإعدادات الخاصة بمساقك:"
+"الإعدادات الخاصة بمقررك:"
 
 #: cms/templates/js/xblock-string-field-editor.underscore
 msgid "Edit the name"
@@ -5943,7 +5943,7 @@ msgid ""
 "You enter the ID in the URL field."
 msgstr ""
 "استخدم هذا الرمز التعريفي عند إنشائك لروابط إلى هذه الوحدة من محتوى آخر "
-"للمساق. عليك إدخال الرمز التعريفي في حقل الرابط."
+"للمقرر. عليك إدخال الرمز التعريفي في حقل الرابط."
 
 #: cms/templates/js/mock/mock-index-page.underscore
 msgid "Courses"
@@ -5963,7 +5963,7 @@ msgstr "يُطلَب من الطلّاب اجتياز اختبار معيّن ق
 
 #: cms/templates/js/mock/mock-settings-page.underscore
 msgid "To create your course entrance exam, go to the"
-msgstr "لإنشاء امتحان الدخول الخص بمساقك، يُرجى الذهاب إلى "
+msgstr "لإنشاء امتحان الدخول الخص بمقررك، يُرجى الذهاب إلى "
 
 #: cms/templates/js/mock/mock-settings-page.underscore
 msgid ". An Entrance Exam section will be created automatically."

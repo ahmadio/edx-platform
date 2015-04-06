@@ -80,7 +80,7 @@
       <img class="profile-img" src="profile_img" alt="${ user.username }" onError="this.onerror=null;this.src='/static/images/vcert-ribbon-s.png';"/>
       <ul class="personal-info">
         <li class="info--username">
-          <span class="title">${ user.username } ${_("Full Name")} (<a href="#apply_name_change" rel="leanModal" class="edit-name">${_("edit")}</a>)</span> <span class="data">${ user.profile.name | h }</span>
+          <span class="title">${_("Full Name")} (<a href="#apply_name_change" rel="leanModal" class="edit-name">${_("edit")}</a>)</span> <span class="data">${ user.profile.name | h }</span>
         </li>
         <li class="info--email">
           <span class="title">${_("Email")}
@@ -180,6 +180,7 @@
     <span class="filter-toggle current active"  data-filter="current"><a href="#">${_("Current")}</a></span>
     <span class="filter-toggle past"  data-filter="past"><a href="#" >${_("Past")}</a></span>
     <span class="filter-toggle comming" data-filter="comming"><a href="#" >${_("Comming")}</a></span>
+    <span class="filter-toggle watching" data-filter="watching"><a href="#" >${_("Watching")}</a></span>
     </header>
 
     % if len(course_enrollment_pairs) > 0:
