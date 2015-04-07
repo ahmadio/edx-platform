@@ -1,6 +1,8 @@
 <%! 
   from django.utils.translation import ugettext as _
   from microsite_configuration import microsite
+  # App that handles subdomain specific branding
+  import branding
 %>
 <%inherit file="../main.html" />
 
@@ -37,7 +39,7 @@
     <div class="inner-wrapper main-search">
       <hgroup>
         <div class="logo">
-          <img src="${logo_file}" alt="${logo_alt_text}" />
+          <img src="${static.url(branding.get_logo_url())}" alt="${logo_alt_text}" />
         </div>
         <h2>${course_index_overlay_text}</h2>
       </hgroup>

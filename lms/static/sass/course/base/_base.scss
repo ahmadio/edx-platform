@@ -194,3 +194,19 @@ img {
     text-align: center;
   }
 }
+
+// kashkool specific
+.genex-scrollpanel {
+  direction: ltr !important;
+  text-align: left !important;
+
+  h3, pre {
+    text-align: left !important;
+  }
+
+}
+
+.chemicalequationinput {
+  direction: ltr !important;
+  text-align: left !important;
+}

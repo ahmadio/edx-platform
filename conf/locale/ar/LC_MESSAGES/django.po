@@ -8994,6 +8994,11 @@ msgstr "السابقة"
 msgid "Comming"
 msgstr "القادمة"
 
+#: lms/templates/kashkool/dashboard.html:183
+msgid "Watching"
+msgstr "منتظر"
+
+
 #: lms/templates/dashboard.html
 #: lms/templates/dashboard/_dashboard_course_listing.html
 #: lms/templates/instructor/instructor_dashboard_2/membership.html

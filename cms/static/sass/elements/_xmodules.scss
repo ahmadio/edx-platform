@@ -332,3 +332,8 @@
     }
   }
 }
+
+.xmodule_edit.xmodule_HtmlDescriptor .editor,
+.xmodule_edit.xmodule_CapaDescriptor .editor {
+  direction: ltr !important;
+}
