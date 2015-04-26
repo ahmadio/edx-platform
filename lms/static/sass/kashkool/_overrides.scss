@@ -1,0 +1,55 @@
+@font-face {
+  font-family: 'Din Next';
+  src: url('../fonts/DINNext/DINNextLTArabic-Light.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Din Next';
+  src: url('../fonts/DINNext/DinTextArabic-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+.my-courses {
+    width: flex-grid(9);
+    margin: 60px auto 0 auto;
+    @include rtl {
+      font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+    }
+
+    @include ltr {
+      font-family: 'Open Sans', 'Din Next', $verdana, sans-serif;
+    }
+
+    > header {
+      margin-bottom: 20px;
+
+      > h2 {
+        margin-bottom: 0;
+        @include rtl {
+          font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+        }
+
+        @include ltr {
+          font-family: 'Open Sans', 'Din Next', $verdana, sans-serif;
+        }
+      } 
+    }
+}
+
+@include rtl {
+  $sans-serif: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+}
+
+@include ltr {
+  $sans-serif: 'Open Sans', 'Din Next', $verdana, sans-serif;
+}
+
+
+html, body {
+  font-family: $sans-serif;
+  font-size: 1em;
+  font-style: normal;
+  line-height: 1em;
+  //-webkit-font-smoothing: antialiased;
+}

@@ -176,7 +176,14 @@
     @include float(left);
     margin: 0;
     width: flex-grid(9);
+    
+    @include rtl {
+      font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+    }
 
+    @include ltr {
+      font-family: 'Open Sans', 'Din Next', $verdana, sans-serif;
+    }
 
     .wrapper-header-courses {
       border-bottom: 4px solid $border-color-l4;
@@ -247,6 +254,14 @@
 // +Dashboard - Course
 // ====================
 .dashboard .my-courses {
+
+    @include rtl {
+      font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+    }
+
+    @include ltr {
+      font-family: 'Open Sans', 'Din Next', $verdana, sans-serif;
+    }
 
   // UI: individual course item
   .course {
