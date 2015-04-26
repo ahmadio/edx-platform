@@ -20,6 +20,15 @@
 
 // +Basic Setup
 // ==================== 
+
+@include rtl {
+  $sans-serif: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
+}
+
+@include ltr {
+  $sans-serif: 'Open Sans', 'Din Next', $verdana, sans-serif;
+}
+
 html {
   font-size: 62.5%;
   height: 102%; // force scrollbar to prevent jump when scroll appears, cannot use overflow because it breaks drag
@@ -33,7 +42,7 @@ body {
 }
 
 body, input, button {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $sans-serif;
 }
 
 a {
