@@ -24,7 +24,7 @@
     font-weight: normal;
     display: block;
     position: absolute;
-    right: 12px;
+    @include right(12px);
     top: 5px;
     height: 35px;
     line-height: 35px;
@@ -51,7 +51,7 @@
     margin-bottom: lh(.50);
     border-bottom: 1px solid $gray-l2;
     .search-count {
-      float: right;
+      @include float(right);
       color: $gray;
     }
   }

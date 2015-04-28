@@ -22,6 +22,7 @@
 <%block name="nav_skip">#my-courses</%block>
 
 <%block name="header_extras">
+<%static:css group='style-kashkool'/>
 % for template_name in ["donation"]:
 <script type="text/template" id="${template_name}-tpl">
   <%static:include path="dashboard/${template_name}.underscore" />

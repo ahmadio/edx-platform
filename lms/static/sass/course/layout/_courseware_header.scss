@@ -5,6 +5,7 @@
   margin: 0 auto 0;
   padding: 0;
   width: 100%;
+  text-align: center;
 
   .course-material{
     @extend %inner-wrapper;
@@ -15,26 +16,30 @@
     @include clearfix();
     @include margin-left(10px);
     padding: ($baseline*0.75) 0 ($baseline*0.75) 0;
+    display: inline-block;
+    margin: 0 auto;
+
 
     li {
       @include float(left);
       list-style: none;
-      margin-right: 6px;
+      @include margin-right(6px);
 
       &.prominent {
-        margin-right: 16px;
+        @include margin-right(16px);
         background: rgba(255, 255, 255, .5);
         border-radius: 3px;
       }
 
       &.prominent + li {
-          padding-left: ($baseline*0.75);
-          border-left: 1px solid #333;
+          @include padding-left($baseline*0.75);
+          @include border-left(1px solid #333);
       }
 
       a {
         border-radius: 3px;
-        color: #555;
+        color: $white;
+        background: #ac7ab5;
         display: block;
         text-align: center;
         padding: ($baseline/2) 13px 12px;
@@ -42,6 +47,22 @@
         font-weight: bold;
         text-decoration: none;
         // text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+
+        &.courseware {
+          background: #6fc4d9;
+        }
+
+        &.course_info {
+          background: #edbf47;
+        }
+
+        &.discussion {
+          background: #ec774b;
+        }
+
+        &.single_textbook {
+          background: #6fc191;
+        }
 
         &:hover, &:focus {
           color: #333;

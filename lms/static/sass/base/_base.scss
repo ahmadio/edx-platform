@@ -26,7 +26,7 @@ html{
 }
 
 body {
-  background: $body-bg;
+  background: #EFF8FF;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -140,6 +140,7 @@ a:focus {
   max-width: grid-width(12);
   min-width: 760px;
   width: flex-grid(12);
+  // text-align: center
 }
 
 span.edx {

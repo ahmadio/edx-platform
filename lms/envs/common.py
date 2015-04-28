@@ -323,7 +323,7 @@ FEATURES = {
     'ENABLE_MOBILE_SOCIAL_FACEBOOK_FEATURES': False,
 
     # Enable the combined login/registration form
-    'ENABLE_COMBINED_LOGIN_REGISTRATION': False,
+    'ENABLE_COMBINED_LOGIN_REGISTRATION': True,
 
     # Enable organizational email opt-in
     'ENABLE_MKTG_EMAIL_OPT_IN': False,
@@ -1319,6 +1319,12 @@ PIPELINE_CSS = {
             'js/vendor/ova/catch/css/main.css'
         ],
         'output_filename': 'css/lms-style-xmodule-annotations.css',
+    },
+    'style-kashkool': {
+        'source_filenames': [
+            'kashkool/circle.css',
+        ],
+        'output_filename': 'css/kashkool-circle.css',
     },
 }
 

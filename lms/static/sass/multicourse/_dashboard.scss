@@ -16,6 +16,7 @@
   padding: ($baseline*2) 0 0 0;
 
   .profile-sidebar {
+    display: none;
     background: transparent;
     @include float(right);
     margin-top: ($baseline*2);
@@ -173,8 +174,8 @@
 // ====================
 .dashboard {
   .my-courses {
-    @include float(left);
-    margin: 0;
+    // @include float(left);
+    margin: 0 auto;
     width: flex-grid(9);
     
     @include rtl {
@@ -186,7 +187,7 @@
     }
 
     .wrapper-header-courses {
-      border-bottom: 4px solid $border-color-l4;
+      // border-bottom: 4px solid $border-color-l4;
       margin-bottom: $baseline;
 
       .header-courses {
@@ -238,7 +239,7 @@
 
       .course-item {
         margin-bottom: $baseline;
-        border-bottom: 4px solid $border-color-l4;
+        // border-bottom: 4px solid $border-color-l4;
         padding-bottom: $baseline;
 
         &:last-child {
@@ -255,12 +256,14 @@
 // ====================
 .dashboard .my-courses {
 
-    @include rtl {
-      font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif;
-    }
+    h3 {
+      @include rtl {
+        font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif !important;
+      }
 
-    @include ltr {
-      font-family: 'Open Sans', 'Din Next', $verdana, sans-serif;
+      @include ltr {
+        font-family: 'Open Sans', 'Din Next', $verdana, sans-serif !important;
+      }
     }
 
   // UI: individual course item
@@ -269,15 +272,16 @@
     @include transition(all 0.15s linear 0s);
     @include clearfix();
     @extend %ui-depth2;
-    margin: ($baseline/2);
+    // margin: ($baseline/2);
+    border: 1px solid #d5d5d5;
 
     .details {
       @include clearfix();
 
       .wrapper-course-image {
         @include float(left);
-        @include margin-right(flex-gutter());
-        width: flex-grid(3);
+        // @include margin-right(flex-gutter());
+        // width: flex-grid(3);
 
         .cover {
           @include box-sizing(border-box);
@@ -286,9 +290,9 @@
           overflow: hidden;
           position: relative;
           max-height: 120px;
-          border-radius: ($baseline/5);
-          border: 1px solid $dashboard-course-cover-border;
-          border-bottom: 4px solid $dashboard-course-cover-border;
+          // border-radius: ($baseline/5);
+          // border: 1px solid $dashboard-course-cover-border;
+          // border-bottom: 4px solid $dashboard-course-cover-border;
 
           .course-image {
             width: 100%;
@@ -328,10 +332,11 @@
       }
 
       .wrapper-course-details {
+        box-sizing: border-box;
         display: block;
         @include float(left);
-        width: flex-grid(9);
-        padding: 0;
+        width: flex-grid(12);
+        padding: 0 20px;
       }
 
       .course-title {
@@ -342,16 +347,34 @@
           display: inline-block;
           margin-bottom: ($baseline/2);
 
+          @include rtl {
+          font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif !important;
+          }
+
+          @include ltr {
+            font-family: 'Open Sans', 'Din Next', $verdana, sans-serif !important;
+          }
+
           &:hover, &:focus {
             text-decoration: none;
           }
         }
       }
 
+      .progress{
+        @include float(left);
+
+        .type-text {
+          top: 5em;
+          left: 2.4em;
+          font-size: 12px;
+        }
+      }
+
       .course-info {
         display: block;
-        @include float(left);
-        width: flex-grid(4);
+        @include float(right);
+        // width: flex-grid(4);
         padding: 0;
         margin-top: ($baseline/2);
 
@@ -359,6 +382,18 @@
           color: $gray-d1;
           @extend %t-title6;
           display: inline-block;
+          
+
+          @include rtl {
+          font-family: 'Din Next', 'Open Sans', Tahoma, Arial, sans-serif !important;
+          }
+
+          @include ltr {
+            font-family: 'Open Sans', 'Din Next', $verdana, sans-serif !important;
+          }
+
+          font-size: 12px;
+          line-height: 12px;
         }
 
         .info-date-block {
@@ -369,9 +404,9 @@
       }
 
       .wrapper-course-actions {
-        display: block;
+        display: inline-block;
         @include float(right);
-        width: flex-grid(8);
+        // width: flex-grid(8);
         padding: 0;
         margin-top: ($baseline/2);
       }

@@ -60,7 +60,7 @@ def url_class(is_active):
             tab_image = notification_image_for_tab(tab, user, course)
         %>
           <li>
-             <a href="${tab.link_func(course, reverse) | h}" class="${url_class(tab_is_active)}">
+             <a href="${tab.link_func(course, reverse) | h}" class="${url_class(tab_is_active)} ${tab.type}">
                  ${_(tab.name) | h}
                  % if tab_is_active:
                    <span class="sr">, current location</span>

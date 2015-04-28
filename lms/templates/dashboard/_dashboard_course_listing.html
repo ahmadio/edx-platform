@@ -1,4 +1,6 @@
 <%page args="course, enrollment, show_courseware_link, cert_status, show_email_settings, course_mode_info, show_refund_option, is_paid_course, is_course_blocked, verification_status, course_requirements, dashboard_index, share_settings" />
+<%! import random %>
+
 
 <%!
 import urllib
@@ -83,21 +85,43 @@ from student.helpers import (
           % else:
             <span>${course.display_name_with_default}</span>
           % endif
+          <div class="course-info">
+            <span class="info-university">${get_course_about_section(course, 'university')} - </span>
+            <span class="info-course-id">${course.display_number_with_default | h}</span>
+            <span class="info-date-block" data-tooltip="Hi">
+            % if course.has_ended():
+              ${_("Ended - {end_date}").format(end_date=course.end_datetime_text("SHORT_DATE"))}
+            % elif course.has_started():
+              ${_("Started - {start_date}").format(start_date=course.start_datetime_text("SHORT_DATE"))}
+            % elif course.start_date_is_still_default: # Course start date TBD
+              ${_("Coming Soon")}
+            % else:   # hasn't started yet
+              ${_("Starts - {start_date}").format(start_date=course.start_datetime_text("SHORT_DATE"))}
+            % endif
+            </span>
+          </div>
         </h3>
-        <div class="course-info">
-          <span class="info-university">${get_course_about_section(course, 'university')} - </span>
-          <span class="info-course-id">${course.display_number_with_default | h}</span>
-          <span class="info-date-block" data-tooltip="Hi">
-          % if course.has_ended():
-            ${_("Ended - {end_date}").format(end_date=course.end_datetime_text("SHORT_DATE"))}
-          % elif course.has_started():
-            ${_("Started - {start_date}").format(start_date=course.start_datetime_text("SHORT_DATE"))}
-          % elif course.start_date_is_still_default: # Course start date TBD
-            ${_("Coming Soon")}
-          % else:   # hasn't started yet
-            ${_("Starts - {start_date}").format(start_date=course.start_datetime_text("SHORT_DATE"))}
-          % endif
-          </span>
+        <div class="progress">
+          % for x in range(1,4):
+            <% progress = random.choice(range(0, 100, 5)) %>
+            <%  
+            if x == 1:
+              type_text = 'Videos'
+            elif x == 2:
+              type_text = 'Problems'
+            else:
+              type_text = 'Simulations'
+
+            %>
+            <div class="circle-default c100 p${progress}">
+              <span>${progress}%</span>
+              <span class="type-text">${_(type_text)}</span>
+              <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+              </div>
+            </div>
+          % endfor
         </div>
         <div class="wrapper-course-actions">
           <div class="course-actions">
