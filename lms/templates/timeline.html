@@ -1,0 +1,61 @@
+<%! from django.utils.translation import ugettext as _ %>
+<%! from django.template import RequestContext %>
+<%! import third_party_auth %>
+<%! from third_party_auth import pipeline %>
+<%! from microsite_configuration import microsite %>
+
+<%!
+  from django.core.urlresolvers import reverse
+%>
+
+<%
+  cert_name_short = settings.CERT_NAME_SHORT
+  cert_name_long = settings.CERT_NAME_LONG
+%>
+
+<%inherit file="main.html" />
+
+<%namespace name='static' file='static_content.html'/>
+
+<%block name="pagetitle">${_("Timeline")}</%block>
+<%block name="bodyclass">view-timeline is-authenticated</%block>
+<%block name="nav_skip">#my-courses</%block>
+
+<%block name="header_extras">
+<%static:css group='style-kashkool'/>
+% for template_name in ["donation"]:
+<script type="text/template" id="${template_name}-tpl">
+  <%static:include path="dashboard/${template_name}.underscore" />
+</script>
+% endfor
+</%block>
+
+<%block name="js_extra">
+  <%static:js group='dashboard'/>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      edx.dashboard.legacy.init({
+        dashboard: "${reverse('dashboard')}",
+        signInUser: "${reverse('signin_user')}",
+        changeEmailSettings: "${reverse('change_email_settings')}",
+        verifyToggleBannerFailedOff: "${reverse('verify_student_toggle_failed_banner_off')}",
+      });
+    });
+  </script>
+</%block>
+
+<div class="dashboard-notifications" tabindex="-1">
+    %if message:
+        <section class="dashboard-banner">
+            ${message}
+        </section>
+    %endif
+</div>
+
+<section class="container dashboard" id="dashboard-main">
+  <section class="my-courses" id="my-courses" role="main" aria-label="Content">
+    <header class="wrapper-header-courses">
+    </header>
+    <section></section>
+  </section>
+</section>

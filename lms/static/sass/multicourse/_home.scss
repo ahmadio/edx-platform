@@ -1,5 +1,6 @@
 .home {
   padding: 0;
+  background: #E7EFFA;
 
   > .container {
     @include box-sizing(border-box);
@@ -10,8 +11,9 @@
     @include linear-gradient($homepage__header--gradient__color--alpha, $homepage__header--gradient__color--bravo);
     background-size: cover;
     background-image: $homepage-bg-image;
-    border-bottom: 1px solid $border-color-3;
+    // border-bottom: 1px solid $border-color-3;
     box-shadow: 0 1px 0 0 $course-header-bg, inset 0 -1px 5px 0 $shadow-l1;
+    background-color: #2CC7A9;
     @include clearfix();
     height: 460px;
     overflow: hidden;
@@ -30,9 +32,8 @@
     }
 
     .title {
-      background: $white;
-      background: $course-header-bg;
-      border: 1px solid $border-color-3;
+      background: rgba(255, 255, 255, 0.26);
+      // border: 1px solid $border-color-3;
       box-shadow: 0 4px 25px 0 rgba(0,0,0, 0.5);
       @include box-sizing(border-box);
       min-height: 120px;

@@ -95,7 +95,7 @@ header.global.slim {
   height: auto;
   padding: ($baseline/4) 0 ($baseline/2) 0;
   border-bottom: 1px solid $outer-border-color;
-  background: $header-bg;
+  // background: $header-bg;
 
   .wrapper-header {
     padding-top: ($baseline/4);

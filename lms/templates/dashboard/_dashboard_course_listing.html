@@ -64,6 +64,30 @@ from student.helpers import (
           <img src="${course_image_url(course)}" class="course-image" alt="${_('{course_number} {course_name} Cover Image').format(course_number=course.number, course_name=course.display_name_with_default) | h}" />
         </a>
       % endif
+      <div class="progress">
+          <!-- % for x in range(1,4):  -->
+            <% progress = random.choice(range(25, 100, 5)) %>
+            <!--
+            <%  
+            if x == 1:
+              type_text = 'Videos'
+            elif x == 2:
+              type_text = 'Problems'
+            else:
+              type_text = 'Simulations'
+
+            %>
+            -->
+            <div class="circle-default c100 p${progress}">
+              <span>${progress}%</span>
+              <span class="type-text"></span>
+              <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+              </div>
+            </div>
+          <!-- % endfor -->
+        </div>
       % if settings.FEATURES.get('ENABLE_VERIFIED_CERTIFICATES'):
         <span class="sts-enrollment" title="${course_verified_certs.get('enrollment_title')}">
           <span class="label">${_("Enrolled as: ")}</span>
@@ -101,42 +125,20 @@ from student.helpers import (
             </span>
           </div>
         </h3>
-        <div class="progress">
-          % for x in range(1,4):
-            <% progress = random.choice(range(0, 100, 5)) %>
-            <%  
-            if x == 1:
-              type_text = 'Videos'
-            elif x == 2:
-              type_text = 'Problems'
-            else:
-              type_text = 'Simulations'
-
-            %>
-            <div class="circle-default c100 p${progress}">
-              <span>${progress}%</span>
-              <span class="type-text">${_(type_text)}</span>
-              <div class="slice">
-                <div class="bar"></div>
-                <div class="fill"></div>
-              </div>
-            </div>
-          % endfor
-        </div>
         <div class="wrapper-course-actions">
           <div class="course-actions">
             % if show_courseware_link:
               % if course.has_ended():
                 % if not is_course_blocked:
-                  <a href="${course_target}" class="enter-course archived">${_('View Archived Course')}<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
+                  <a href="${course_target}" class="enter-course archived">التنويهات<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
                 % else:
-                  <a class="enter-course-blocked archived">${_('View Archived Course')}<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
+                  <a class="enter-course-blocked archived">التنويهات<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
                 % endif
               % else:
                 % if not is_course_blocked:
-                  <a href="${course_target}" class="enter-course">${_('View Course')}<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
+                  <a href="${course_target}" class="enter-course">التنويهات<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
                 % else:
-                  <a class="enter-course-blocked">${_('View Course')}<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
+                  <a class="enter-course-blocked">التنويهات<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
                 % endif
               % endif
 
@@ -289,6 +291,33 @@ from student.helpers import (
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="wrapper-course-links">
+          <div class="course-links">
+            % if show_courseware_link:
+              <% textbook_url = reverse('pdf_book', kwargs={'course_id': unicode(course.id), 'book_index': 0})%>
+              <% courseware_link = reverse('courseware', args=[unicode(course.id)]) %>
+              % if course.has_ended():
+                % if not is_course_blocked:
+                  <a href="${courseware_link}" class="">${_('View Archived Course')}<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
+                  % if course.pdf_textbooks:
+                    <a href="${textbook_url}" class="">الكتاب</a>
+                  % endif
+                % else:
+                  <a class="enter-course-blocked archived">${_('View Archived Course')}<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
+                % endif
+              % else:
+                % if not is_course_blocked:
+                  <a href="${courseware_link}" class="">${_('View Course')}<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
+                  % if course.pdf_textbooks:
+                    <a href="${textbook_url}" class="">الكتاب</a>
+                  % endif
+                % else:
+                  <a class="enter-course-blocked">${_('View Course')}<span class="sr">&nbsp;${course.display_name_with_default}</span></a>
+                % endif
+              % endif
+            % endif
           </div>
         </div>
       </div>

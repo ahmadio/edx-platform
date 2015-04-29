@@ -272,14 +272,19 @@
     @include transition(all 0.15s linear 0s);
     @include clearfix();
     @extend %ui-depth2;
+    background: #fff;
     // margin: ($baseline/2);
-    border: 1px solid #d5d5d5;
+    // border: 1px solid #d5d5d5;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.1);
 
     .details {
       @include clearfix();
 
       .wrapper-course-image {
+        position: relative;
         @include float(left);
+        width: 100%;
+        border-bottom: 1px solid #eaeaea;
         // @include margin-right(flex-gutter());
         // width: flex-grid(3);
 
@@ -289,7 +294,8 @@
           @include float(left);
           overflow: hidden;
           position: relative;
-          max-height: 120px;
+          max-height: 140px;
+          width: 100%;
           // border-radius: ($baseline/5);
           // border: 1px solid $dashboard-course-cover-border;
           // border-bottom: 4px solid $dashboard-course-cover-border;
@@ -336,7 +342,7 @@
         display: block;
         @include float(left);
         width: flex-grid(12);
-        padding: 0 20px;
+        padding: 0 20px 20px;
       }
 
       .course-title {
@@ -363,6 +369,8 @@
 
       .progress{
         @include float(left);
+        position: absolute;
+        top: 12px;
 
         .type-text {
           top: 5em;
@@ -403,7 +411,7 @@
         }
       }
 
-      .wrapper-course-actions {
+      .wrapper-course-actions, .wrapper-course-links {
         display: inline-block;
         @include float(right);
         // width: flex-grid(8);
@@ -526,6 +534,33 @@
             }
           }
         }
+      }
+
+      .wrapper-course-links {
+        @include float(left);
+        padding-top: 10px;
+      }
+      .course-links {
+        a {
+          padding: 10px;
+          outline: none;
+          // border: 1px solid;
+          margin-left: 10px;
+          background: #2CC7A9;
+          color: #fff;
+          box-shadow: 0 2px 4px 0 rgba(0,0,0, 0.24);
+          display: inline-block;
+          text-decoration: none;
+
+          &:hover, 
+          &:focus {
+            background: #229B84;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0, 0.4);
+            outline: none;
+          }
+        }
+
+        
       }
 
       .course-status {
@@ -981,10 +1016,17 @@
     &.professional {
 
       // changes to cover
-      .wrapper-course-image .cover {
-        border-color: $professional-color-lvl3;
-        padding: ($baseline/10);
+      .wrapper-course-image {
+        width: 100%;
+
+        .cover {
+          border-color: $professional-color-lvl3;
+          padding: ($baseline/10);
+          width: 100%;
+        } 
       }
+
+      
 
       // course enrollment status message
       .sts-enrollment {

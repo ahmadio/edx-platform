@@ -1,13 +1,13 @@
 .find-courses, .university-profile {
-  background: $course-profile-bg;
+  background: #E7EFFA;
   padding-bottom: ($baseline*3);
 
   header.search {
-    background: $course-profile-bg;
+    background: #2CC7A9;
     background-size: cover;
     background-image: $homepage-bg-image;
     background-position: center top !important;
-    border-bottom: 1px solid $border-color-3;
+    // border-bottom: 1px solid $border-color-3;
     box-shadow: inset 0 -1px 8px 0 rgba(0,0,0, 0.2), inset 0 1px 12px 0 rgba(0,0,0, 0.3);
     height: 430px;
     margin-top: $header_image_margin;
@@ -25,8 +25,8 @@
 
       > hgroup {
         background: $white;
-        background: $course-header-bg;
-        border: 1px solid $border-color-3;
+        background: (255,255,255,0.4);;
+        // border: 1px solid $border-color-3;
         box-shadow: 0 4px 25px 0 rgba(0,0,0, 0.5);
         padding: $baseline ($baseline*1.5);
         position: relative;

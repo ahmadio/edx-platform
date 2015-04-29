@@ -3,12 +3,25 @@
 
 header.global {
   @extend %ui-depth1;
-  border-bottom: 1px solid $m-gray;
+  // border-bottom: 1px solid $m-gray;
   box-shadow: 0 1px 5px 0 $shadow-l1;
   background: $header-bg;
   height: 76px;
   position: relative;
   width: 100%;
+
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right bottom,
+    color-stop(0, #A4FFFF),
+    color-stop(1, #8FEF88)
+  );
+  background-image: -o-linear-gradient(left bottom, #A4FFFF 0%, #8FEF88 100%);
+  background-image: -moz-linear-gradient(left bottom, #A4FFFF 0%, #8FEF88 100%);
+  background-image: -webkit-linear-gradient(left bottom, #A4FFFF 0%, #8FEF88 100%);
+  background-image: -ms-linear-gradient(left bottom, #A4FFFF 0%, #8FEF88 100%);
+  background-image: linear-gradient(to left bottom, #A4FFFF 0%, #8FEF88 100%);
 
   .wrapper-header {
     @include clearfix();
@@ -26,6 +39,10 @@ header.global {
 
     a {
       display: block;
+
+      img {
+        height: 50px;
+      }
     }
   }
 
@@ -110,7 +127,7 @@ header.global {
       }
 
       &:hover, &:focus, &:active {
-        background: $button-bg-hover-color;
+        // background: $button-bg-hover-color;
       }
     }
   }
@@ -148,7 +165,13 @@ header.global {
     }
 
     a.user-link {
-      @include padding(5px, 12px, 10px, 10px);
+      @include rtl {
+        padding: 5px 10px 11px 12px;
+      }
+
+      @include ltr {
+        padding: 5px 12px 10px 10px;
+      }
       position: relative;
       text-transform: none;
       font-size: 14px;

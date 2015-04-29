@@ -678,6 +678,31 @@ def dashboard(request):
     return render_to_response('dashboard.html', context)
 
 
+@login_required
+@ensure_csrf_cookie
+def timeline(request):
+    user = request.user
+
+    platform_name = microsite.get_value("platform_name", settings.PLATFORM_NAME)
+
+
+    message = ""
+    if not user.is_active:
+        message = render_to_string(
+            'registration/activate_account_notice.html',
+            {'email': user.email, 'platform_name': platform_name}
+        )
+
+    context = {
+        'message': message,
+        'user': user,
+        'logout_url': reverse(logout_user),
+        'platform_name': platform_name,
+    }
+
+    return render_to_response('timeline.html', context)
+
+
 def _create_recent_enrollment_message(course_enrollment_pairs, course_modes):
     """Builds a recent course enrollment message
 

@@ -42,7 +42,11 @@ site_status_msg = get_site_status_msg(course_id)
     <h1 class="logo">
       <a href="${marketing_link('ROOT')}">
         <%block name="navigation_logo">
+            <img src="${static.url('kashkool/images/kashkool-logo.png')}" alt="${platform_name()}"/>
+
+        <!--
             <img src="${static.url(branding.get_logo_url())}" alt="${platform_name()}"/>
+        -->
         </%block>
       </a>
     </h1>
@@ -78,7 +82,7 @@ site_status_msg = get_site_status_msg(course_id)
     </ol>
     <ol class="user">
       <li class="primary">
-        <a href="${reverse('dashboard')}" class="user-link">
+        <a href="${reverse('timeline')}" class="user-link">
           <i class="icon fa fa-home" aria-hidden="true"></i>
           <span class="sr">${_("Dashboard for:")}</span>
           <div>
@@ -90,6 +94,7 @@ site_status_msg = get_site_status_msg(course_id)
         <a href="#" class="dropdown" aria-haspopup="true" aria-expanded="false"><span class="sr">${_("More options dropdown")}</span><i class="fa fa-sort-desc" aria-hidden="true"></i></a>
         <ul class="dropdown-menu" aria-label="More Options" role="menu">
           <%block name="navigation_dropdown_menu_links" >
+            <li><a href="${reverse('dashboard')}">My Courses</a></li>
             <li><a href="${reverse('account_settings')}">${_("Account Settings")}</a></li>
             <li><a href="${reverse('learner_profile', kwargs={'username': user.username})}">${_("My Profile")}</a></li>
           </%block>
