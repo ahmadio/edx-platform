@@ -766,6 +766,9 @@ INSTALLED_APPS = (
     'openedx.core.djangoapps.credit',
 
     'xblock_django',
+
+    # Daress manager app
+    'manager',
 )
 
 
