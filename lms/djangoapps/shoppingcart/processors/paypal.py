@@ -23,9 +23,11 @@ To enable this implementation, add the following Django settings:
 import hmac
 import binascii
 import re
+import pprint
 import json
 import uuid
 import logging
+import paypalrestsdk
 from textwrap import dedent
 from datetime import datetime
 from collections import OrderedDict, defaultdict
@@ -47,7 +49,7 @@ log = logging.getLogger(__name__)
 DEFAULT_REASON = ugettext_noop("UNKNOWN REASON")
 
 
-def process_postpay_callback(params):
+def process_postpay_callback(request):
     """
     Handle a response from the payment processor.
 
@@ -68,23 +70,29 @@ def process_postpay_callback(params):
         dict
 
     """
+
+    params = request.GET.dict()
+
     try:
         valid_params = verify_signatures(params)
+
+        cart = Order.get_cart_for_user(request.user)
+
         result = _payment_accepted(
-            valid_params['req_reference_number'],
-            valid_params['auth_amount'],
-            valid_params['req_currency'],
-            valid_params['decision']
+            valid_params['paymentId'],
+            valid_params['PayerID'],
+            valid_params['token'],
+            request
         )
         if result['accepted']:
-            _record_purchase(params, result['order'])
+            _record_purchase(params, result['order'], result['payment'])
             return {
                 'success': True,
                 'order': result['order'],
                 'error_html': ''
             }
         else:
-            _record_payment_info(params, result['order'])
+            _record_payment_info(params, result['order'], result['payment'])
             return {
                 'success': False,
                 'order': result['order'],
@@ -144,33 +152,19 @@ def verify_signatures(params):
 
     # First see if the user cancelled the transaction
     # if so, then not all parameters will be passed back so we can't yet verify signatures
-    if params.get('decision') == u'CANCEL':
+    if not params.get('paymentId', ''):
         raise CCProcessorUserCancelled()
 
-    #  if the user decline the transaction
-    # if so, then auth_amount will not be passed back so we can't yet verify signatures
-    if params.get('decision') == u'DECLINE':
-        raise CCProcessorUserDeclined()
+    # if not params.get('success', 'false') == 'true':
+    #     pass
 
-    # Validate the signature to ensure that the message is from CyberSource
-    # and has not been tampered with.
-    signed_fields = params.get('signed_field_names', '').split(',')
-    data = u",".join([u"{0}={1}".format(k, params.get(k, '')) for k in signed_fields])
-    returned_sig = params.get('signature', '')
-    if processor_hash(data) != returned_sig:
-        raise CCProcessorSignatureException()
 
-    # Validate that we have the paramters we expect and can convert them
-    # to the appropriate types.
-    # Usually validating the signature is sufficient to validate that these
-    # fields exist, but since we're relying on CyberSource to tell us
-    # which fields they included in the signature, we need to be careful.
+    # Validate that we have the paramters we expect
     valid_params = {}
     required_params = [
-        ('req_reference_number', int),
-        ('req_currency', str),
-        ('decision', str),
-        ('auth_amount', Decimal),
+        ('paymentId', str),
+        ('token', str),
+        ('PayerID', str),
     ]
     for key, key_type in required_params:
         if key not in params:
@@ -291,9 +285,8 @@ def get_purchase_params(cart, callback_url=None, extra_data=None):
 
     params['amount'] = amount
     params['currency'] = cart.currency
-    params['orderNumber'] = "OrderId: {0:d}".format(cart.id)
+    params['orderNumber'] = cart.id
 
-    params['access_key'] = get_processor_config().get('ACCESS_KEY', '')
     params['profile_id'] = get_processor_config().get('PROFILE_ID', '')
     params['reference_number'] = cart.id
     params['transaction_type'] = 'sale'
@@ -303,7 +296,7 @@ def get_purchase_params(cart, callback_url=None, extra_data=None):
     params['signed_field_names'] = 'access_key,profile_id,amount,currency,transaction_type,reference_number,signed_date_time,locale,transaction_uuid,signed_field_names,unsigned_field_names,orderNumber'
     params['unsigned_field_names'] = ''
     params['transaction_uuid'] = uuid.uuid4().hex
-    params['payment_method'] = 'card'
+    params['payment_method'] = 'paypal'
 
     if callback_url is not None:
         params['override_custom_receipt_page'] = callback_url
@@ -329,15 +322,15 @@ def get_purchase_endpoint():
     return reverse("shoppingcart.paypal.views.create_paypal_payment")
 
 
-def _payment_accepted(order_id, auth_amount, currency, decision):
+def _payment_accepted(payment_id, payer_id, token, request):
     """
-    Check that CyberSource has accepted the payment.
+    Check that paypal has accepted the payment.
 
     Args:
-        order_num (int): The ID of the order associated with this payment.
-        auth_amount (Decimal): The amount the user paid using CyberSource.
-        currency (str): The currency code of the payment.
-        decision (str): "ACCEPT" if the payment was accepted.
+        # order_num (int): The ID of the order associated with this payment.
+        # auth_amount (Decimal): The amount the user paid using CyberSource.
+        # currency (str): The currency code of the payment.
+        # decision (str): "ACCEPT" if the payment was accepted.
 
     Returns:
         dictionary of the form:
@@ -353,19 +346,48 @@ def _payment_accepted(order_id, auth_amount, currency, decision):
         CCProcessorWrongAmountException: The user did not pay the correct amount.
 
     """
+    pp = pprint.PrettyPrinter(indent=4)
+
+    paypalrestsdk.configure({
+      'mode': 'sandbox',
+      'client_id': get_processor_config().get('CLIENT_ID', ''),
+      'client_secret': get_processor_config().get('CLIENT_SECRET', '')
+    })
+
+    payment = paypalrestsdk.Payment.find(payment_id)
+
+    print 'approved payment '
+    pp.pprint(payment)
+
+    order_id = int(payment.transactions[0].custom)
+
+
     try:
         order = Order.objects.get(id=order_id)
     except Order.DoesNotExist:
         raise CCProcessorDataException(_("The payment processor accepted an order whose number is not in our system."))
 
-    if decision == 'ACCEPT':
-        if auth_amount == order.total_cost and currency.lower() == order.currency.lower():
-            return {
-                'accepted': True,
-                'amt_charged': auth_amount,
-                'currency': currency,
-                'order': order
-            }
+    payment_amount = int(float(payment.transactions[0].amount.total))
+    if payment.state == 'created' or 'approved':
+        if payment_amount == int(order.total_cost) and payment.transactions[0].amount.currency.lower() == order.currency.lower():
+            payment.execute({"payer_id": payer_id}) 
+            print 'excuted payment '
+            pp.pprint(payment)
+
+            if payment.state == 'approved' or 'completed':
+                return {
+                    'accepted': True,
+                    'amt_charged': payment_amount,
+                    'currency': order.currency,
+                    'order': order,
+                    'payment': payment
+                }
+            else:
+                ex = CCProcessorDataException(
+                    _(
+                        u"something went wrong in excuting this payment"
+                        )
+                )
         else:
             ex = CCProcessorWrongAmountException(
                 _(
@@ -391,7 +413,7 @@ def _payment_accepted(order_id, auth_amount, currency, decision):
         }
 
 
-def _record_purchase(params, order):
+def _record_purchase(params, order, payment):
     """
     Record the purchase and run purchased_callbacks
 
@@ -403,15 +425,6 @@ def _record_purchase(params, order):
         None
 
     """
-    # Usually, the credit card number will have the form "xxxxxxxx1234"
-    # Parse the string to retrieve the digits.
-    # If we can't find any digits, use placeholder values instead.
-    ccnum_str = params.get('req_card_number', '')
-    mm = re.search("\d", ccnum_str)
-    if mm:
-        ccnum = ccnum_str[mm.start():]
-    else:
-        ccnum = "####"
 
     if settings.FEATURES.get("LOG_POSTPAY_CALLBACKS"):
         log.info(
@@ -419,22 +432,16 @@ def _record_purchase(params, order):
         )
 
     # Mark the order as purchased and store the billing information
+    print payment
     order.purchase(
-        first=params.get('req_bill_to_forename', ''),
-        last=params.get('req_bill_to_surname', ''),
-        street1=params.get('req_bill_to_address_line1', ''),
-        street2=params.get('req_bill_to_address_line2', ''),
-        city=params.get('req_bill_to_address_city', ''),
-        state=params.get('req_bill_to_address_state', ''),
-        country=params.get('req_bill_to_address_country', ''),
-        postalcode=params.get('req_bill_to_address_postal_code', ''),
-        ccnum=ccnum,
-        cardtype=CARDTYPE_MAP[params.get('req_card_type', '')],
+        first=payment.payer.payer_info.first_name,
+        last=payment.payer.payer_info.last_name,
+        country= 'N/A',
         processor_reply_dump=json.dumps(params)
     )
 
 
-def _record_payment_info(params, order):
+def _record_payment_info(params, order, payment):
     """
     Record the purchase and run purchased_callbacks
 
@@ -468,16 +475,9 @@ def _get_processor_decline_html(params):
     return _format_error_html(
         _(
             "Sorry! Our payment processor did not accept your payment.  "
-            "The decision they returned was {decision}, "
-            "and the reason was {reason}.  "
             "You were not charged. Please try a different form of payment.  "
             "Contact us with payment-related questions at {email}."
         ).format(
-            decision='<span class="decision">{decision}</span>'.format(decision=params['decision']),
-            reason='<span class="reason">{reason_code}:{reason_msg}</span>'.format(
-                reason_code=params['reason_code'],
-                reason_msg=REASONCODE_MAP.get(params['reason_code'])
-            ),
             email=payment_support_email
         )
     )

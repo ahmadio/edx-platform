@@ -9,17 +9,12 @@ EDXAPP_PREVIEW_LMS_BASE: "syasi.org"
 EDXAPP_LANGUAGE_CODE : 'ar'
 EDXAPP_TIME_ZONE: 'Africa/Cairo'
 
-# credentials
-EDXAPP_AWS_ACCESS_KEY_ID:  "AKIAINV25CLNP5BPLNNA"
-EDXAPP_AWS_SECRET_ACCESS_KEY:  "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"
 
 # email backend conf
 EDXAPP_EMAIL_BACKEND: 'django.core.mail.backends.smtp.EmailBackend'
 EDXAPP_EMAIL_HOST: 'smtp.gmail.com'
 EDXAPP_EMAIL_PORT: 587
 EDXAPP_EMAIL_USE_TLS: True
-EDXAPP_EMAIL_HOST_USER: 'ahmad@syasi.org'
-EDXAPP_EMAIL_HOST_PASSWORD: '!@123456'
 
 # emails
 EDXAPP_TECH_SUPPORT_EMAIL: 'technical@syasi.org'
@@ -36,23 +31,7 @@ EDXAPP_PRESS_EMAIL: 'press@syasi.org'
 EDXAPP_PLATFORM_TWITTER_ACCOUNT: '@Syasi_IPT'
 EDXAPP_PLATFORM_FACEBOOK_ACCOUNT: 'http://www.facebook.com/SyasiIPT'
 
-# analytics
-EDXAPP_GOOGLE_ANALYTICS_ACCOUNT: "UA-53587187-1"
-EDXAPP_SEGMENT_IO_LMS: true
-EDXAPP_SEGMENT_IO_LMS_KEY: "wgrvnniefh"
-COMMON_ENABLE_NEWRELIC: True
-NEWRELIC_LICENSE_KEY: "d237d603d10e1998e215bfa65c5a9951de6f888a"
-COMMON_ENABLE_DATADOG: False
 
-# For the CMS
-EDXAPP_SEGMENT_IO_KEY: "wgrvnniefh"
-EDXAPP_SEGMENT_IO: true
-
-# auth
-# Set global htpasswd credentials
-COMMON_ENABLE_BASIC_AUTH: True
-COMMON_HTPASSWD_USER: SuperDaress
-COMMON_HTPASSWD_PASS: c*vzE4Y!uWate
 
 # payments
 EDXAPP_CC_PROCESSOR_NAME: "Paypal"
@@ -75,12 +54,13 @@ EDXAPP_CC_PROCESSOR:
     PROFILE_ID: "edx"
 
 # repos 
-edx_platform_repo: "https://{{ COMMON_GIT_MIRROR }}/ahmadio/edx-platform.git"
+edx_platform_repo: "https://github.com/ahmadio/edx-platform.git"
 edx_platform_version: 'daress-cypress'
 
 # extra python packages
 EDXAPP_EXTRA_REQUIREMENTS:
   - name: paypalrestsdk
+    version: 1.10.1
 
 # registration fields
 EDXAPP_REGISTRATION_EXTRA_FIELDS:
