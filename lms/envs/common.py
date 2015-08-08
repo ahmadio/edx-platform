@@ -193,7 +193,7 @@ FEATURES = {
     'ENABLE_DEBUG_RUN_PYTHON': False,
 
     # Enable URL that shows information about the status of variuous services
-    'ENABLE_SERVICE_STATUS': False,
+    'ENABLE_SERVICE_STATUS': True,
 
     # Toggle to indicate use of a custom theme
     'USE_CUSTOM_THEME': False,
@@ -209,7 +209,7 @@ FEATURES = {
     # 'courseware.student_field_overrides.IndividualStudentOverrideProvider' to
     # the setting FIELD_OVERRIDE_PROVIDERS, in addition to setting this flag to
     # True.
-    'INDIVIDUAL_DUE_DATES': False,
+    'INDIVIDUAL_DUE_DATES': True,
 
     # Enable Custom Courses for EdX
     'CUSTOM_COURSES_EDX': False,
@@ -237,16 +237,16 @@ FEATURES = {
     'MULTIPLE_ENROLLMENT_ROLES': False,
 
     # Toggle the availability of the shopping cart page
-    'ENABLE_SHOPPING_CART': False,
+    'ENABLE_SHOPPING_CART': True,
 
     # Toggle storing detailed billing information
-    'STORE_BILLING_INFO': False,
+    'STORE_BILLING_INFO': True,
 
     # Enable flow for payments for course registration (DIFFERENT from verified student flow)
-    'ENABLE_PAID_COURSE_REGISTRATION': False,
+    'ENABLE_PAID_COURSE_REGISTRATION': True,
 
     # Enable the display of cosmetic course price display (set in course advanced settings)
-    'ENABLE_COSMETIC_DISPLAY_PRICE': False,
+    'ENABLE_COSMETIC_DISPLAY_PRICE': True,
 
     # Automatically approve student identity verification attempts
     'AUTOMATIC_VERIFY_STUDENT_IDENTITY_FOR_TESTING': False,
@@ -264,7 +264,7 @@ FEATURES = {
 
     # Give course staff unrestricted access to grade downloads (if set to False,
     # only edX superusers can perform the downloads)
-    'ALLOW_COURSE_STAFF_GRADE_DOWNLOADS': False,
+    'ALLOW_COURSE_STAFF_GRADE_DOWNLOADS': True,
 
     'ENABLED_PAYMENT_REPORTS': [
         "refund_report",
@@ -324,7 +324,7 @@ FEATURES = {
     'ENABLE_COURSE_BLOCKS_NAVIGATION_API': False,
 
     # Enable the combined login/registration form
-    'ENABLE_COMBINED_LOGIN_REGISTRATION': False,
+    'ENABLE_COMBINED_LOGIN_REGISTRATION': True,
 
     # Enable organizational email opt-in
     'ENABLE_MKTG_EMAIL_OPT_IN': False,
@@ -332,7 +332,7 @@ FEATURES = {
     # Show a section in the membership tab of the instructor dashboard
     # to allow an upload of a CSV file that contains a list of new accounts to create
     # and register for course.
-    'ALLOW_AUTOMATED_SIGNUPS': False,
+    'ALLOW_AUTOMATED_SIGNUPS': True,
 
     # Enable display of enrollment counts in instructor dash, analytics section
     'DISPLAY_ANALYTICS_ENROLLMENTS': True,
@@ -341,22 +341,22 @@ FEATURES = {
     'ENABLE_FOOTER_MOBILE_APP_LINKS': False,
 
     # Let students save and manage their annotations
-    'ENABLE_EDXNOTES': False,
+    'ENABLE_EDXNOTES': True,
 
     # Milestones application flag
-    'MILESTONES_APP': False,
+    'MILESTONES_APP': True,
 
     # Prerequisite courses feature flag
-    'ENABLE_PREREQUISITE_COURSES': False,
+    'ENABLE_PREREQUISITE_COURSES': True,
 
     # For easily adding modes to courses during acceptance testing
     'MODE_CREATION_FOR_TESTING': False,
 
     # Courseware search feature
-    'ENABLE_COURSEWARE_SEARCH': False,
+    'ENABLE_COURSEWARE_SEARCH': True,
 
     # Dashboard search feature
-    'ENABLE_DASHBOARD_SEARCH': False,
+    'ENABLE_DASHBOARD_SEARCH': True,
 
     # log all information from cybersource callbacks
     'LOG_POSTPAY_CALLBACKS': True,
@@ -368,7 +368,7 @@ FEATURES = {
     'ENABLE_ONLOAD_BEACON': False,
 
     # Toggle platform-wide course licensing
-    'LICENSING': False,
+    'LICENSING': True,
 
     # Certificates Web/HTML Views
     'CERTIFICATES_HTML_VIEW': False,
@@ -390,13 +390,13 @@ FEATURES = {
     },
 
     # Course discovery feature
-    'ENABLE_COURSE_DISCOVERY': False,
+    'ENABLE_COURSE_DISCOVERY': True,
 
     # Software secure fake page feature flag
     'ENABLE_SOFTWARE_SECURE_FAKE': False,
 
     # Teams feature
-    'ENABLE_TEAMS': False,
+    'ENABLE_TEAMS': True,
 
     # Show video bumper in LMS
     'ENABLE_VIDEO_BUMPER': False,
@@ -408,7 +408,7 @@ FEATURES = {
     'ENABLE_OPENBADGES': False,
 
     # Credit course API
-    'ENABLE_CREDIT_API': False,
+    'ENABLE_CREDIT_API': True,
 
     # The block types to disable need to be specified in "x block disable config" in django admin.
     'ENABLE_DISABLING_XBLOCK_TYPES': True,
@@ -997,7 +997,7 @@ PAYMENT_SUPPORT_EMAIL = 'payment@example.com'
 
 ##### Using cybersource by default #####
 
-CC_PROCESSOR_NAME = 'CyberSource'
+CC_PROCESSOR_NAME = 'Paypal'
 CC_PROCESSOR = {
     'CyberSource': {
         'SHARED_SECRET': '',
@@ -1008,6 +1008,12 @@ CC_PROCESSOR = {
     },
     'CyberSource2': {
         "PURCHASE_ENDPOINT": '',
+        "SECRET_KEY": '',
+        "ACCESS_KEY": '',
+        "PROFILE_ID": '',
+    },
+    'Paypal': {
+        "PURCHASE_ENDPOINT": '/shoppingcart/create_paypal_payment/',
         "SECRET_KEY": '',
         "ACCESS_KEY": '',
         "PROFILE_ID": '',
@@ -2512,7 +2518,7 @@ CHECKPOINT_PATTERN = r'(?P<checkpoint_name>[^/]+)'
 # If using FEATURES['INDIVIDUAL_DUE_DATES'], you should add
 # 'courseware.student_field_overrides.IndividualStudentOverrideProvider' to
 # this setting.
-FIELD_OVERRIDE_PROVIDERS = ()
+FIELD_OVERRIDE_PROVIDERS = ('courseware.student_field_overrides.IndividualStudentOverrideProvider',)
 
 # PROFILE IMAGE CONFIG
 # WARNING: Certain django storage backends do not support atomic
