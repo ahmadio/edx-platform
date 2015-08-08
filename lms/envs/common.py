@@ -1014,8 +1014,8 @@ CC_PROCESSOR = {
     },
     'Paypal': {
         "PURCHASE_ENDPOINT": '/shoppingcart/create_paypal_payment/',
-        "SECRET_KEY": '',
-        "ACCESS_KEY": '',
+        "CLIENT_ID": '',
+        "CLIENT_SECRET": '',
         "PROFILE_ID": '',
     }
 }
