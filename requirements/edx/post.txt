@@ -7,3 +7,8 @@
 
 # This must be installed after distribute has been updated.
 MySQL-python==1.2.4
+
+# Daress additons
+# Paypal requirements
+
+paypalrestsdk==1.10.1
