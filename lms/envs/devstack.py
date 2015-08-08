@@ -91,12 +91,12 @@ PIPELINE_SASS_ARGUMENTS = '--debug-info --require {proj_dir}/static/sass/bourbon
 ########################### VERIFIED CERTIFICATES #################################
 
 FEATURES['AUTOMATIC_VERIFY_STUDENT_IDENTITY_FOR_TESTING'] = True
-FEATURES['ENABLE_PAYMENT_FAKE'] = True
+# FEATURES['ENABLE_PAYMENT_FAKE'] = True
 
-CC_PROCESSOR_NAME = 'CyberSource2'
+CC_PROCESSOR_NAME = 'Paypal'
 CC_PROCESSOR = {
-    'CyberSource2': {
-        "PURCHASE_ENDPOINT": '/shoppingcart/payment_fake/',
+    'Paypal': {
+        # "PURCHASE_ENDPOINT": '/shoppingcart/create_paypal_payment/',
         "SECRET_KEY": 'abcd123',
         "ACCESS_KEY": 'abcd123',
         "PROFILE_ID": 'edx',
