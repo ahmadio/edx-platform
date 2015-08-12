@@ -1978,7 +1978,6 @@
 .note-editor .dropdown-submenu:focus > a > [class^="icon-"],
 .note-editor .dropdown-submenu:hover > a > [class*=" icon-"],
 .note-editor .dropdown-submenu:focus > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
 }
 .note-editor .icon-glass {
   background-position: 0      0;
