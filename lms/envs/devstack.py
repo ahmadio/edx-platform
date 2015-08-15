@@ -90,14 +90,14 @@ PIPELINE_SASS_ARGUMENTS = '--debug-info --require {proj_dir}/static/sass/bourbon
 ########################### VERIFIED CERTIFICATES #################################
 
 FEATURES['AUTOMATIC_VERIFY_STUDENT_IDENTITY_FOR_TESTING'] = True
-FEATURES['ENABLE_PAYMENT_FAKE'] = True
+FEATURES['ENABLE_PAYMENT_FAKE'] = False
 
-CC_PROCESSOR_NAME = 'CyberSource2'
+CC_PROCESSOR_NAME = 'Paypal'
 CC_PROCESSOR = {
-    'CyberSource2': {
-        "PURCHASE_ENDPOINT": '/shoppingcart/payment_fake/',
-        "SECRET_KEY": 'abcd123',
-        "ACCESS_KEY": 'abcd123',
+    'Paypal': {
+        "PURCHASE_ENDPOINT": '/shoppingcart/create_paypal_payment/',
+        "CLIENT_ID": 'Adz-F7RxcMb08SvvL1Aq3kLA_4CFymCPva3AcvGvAkTNOdo-z7MdC_0-Fjw4Kkf0FdTTQ21aKmBEB4DO',
+        "CLIENT_SECRET": 'EA1OTT729MVVY7kUsfffazlH-H-fN2y8gG8xUL-xEtLKhytW8AJ7aZb3SFEubvvqyKPZ4aq2fOFmHm_p',
         "PROFILE_ID": 'edx',
     }
 }

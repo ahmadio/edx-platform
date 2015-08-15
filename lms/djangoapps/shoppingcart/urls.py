@@ -27,3 +27,9 @@ if settings.FEATURES.get('ENABLE_PAYMENT_FAKE'):
         'shoppingcart.tests.payment_fake',
         url(r'^payment_fake', PaymentFakeView.as_view()),
     )
+
+urlpatterns += patterns(
+    '',
+    url(r'^create_paypal_payment/$', 'shoppingcart.paypal.views.create_paypal_payment', name='create_paypal_payment'),
+    url(r'^paypal_postpay_callback/$', 'shoppingcart.paypal.views.paypal_postpay_callback'),  # Both the ~accept and ~reject callback pages are handled here
+    )

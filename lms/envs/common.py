@@ -237,13 +237,13 @@ FEATURES = {
     'MULTIPLE_ENROLLMENT_ROLES': False,
 
     # Toggle the availability of the shopping cart page
-    'ENABLE_SHOPPING_CART': False,
+    'ENABLE_SHOPPING_CART': True,
 
     # Toggle storing detailed billing information
-    'STORE_BILLING_INFO': False,
+    'STORE_BILLING_INFO': True,
 
     # Enable flow for payments for course registration (DIFFERENT from verified student flow)
-    'ENABLE_PAID_COURSE_REGISTRATION': False,
+    'ENABLE_PAID_COURSE_REGISTRATION': True,
 
     # Enable the display of cosmetic course price display (set in course advanced settings)
     'ENABLE_COSMETIC_DISPLAY_PRICE': False,
@@ -997,7 +997,7 @@ PAYMENT_SUPPORT_EMAIL = 'payment@example.com'
 
 ##### Using cybersource by default #####
 
-CC_PROCESSOR_NAME = 'CyberSource'
+CC_PROCESSOR_NAME = 'Paypal'
 CC_PROCESSOR = {
     'CyberSource': {
         'SHARED_SECRET': '',
@@ -1010,6 +1010,12 @@ CC_PROCESSOR = {
         "PURCHASE_ENDPOINT": '',
         "SECRET_KEY": '',
         "ACCESS_KEY": '',
+        "PROFILE_ID": '',
+    },
+    'Paypal': {
+        "PURCHASE_ENDPOINT": '/shoppingcart/create_paypal_payment/',
+        "CLIENT_ID": '',
+        "CLIENT_SECRET": '',
         "PROFILE_ID": '',
     }
 }
