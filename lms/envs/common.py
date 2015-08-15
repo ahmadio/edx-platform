@@ -1014,9 +1014,9 @@ CC_PROCESSOR = {
     },
     'Paypal': {
         "PURCHASE_ENDPOINT": '/shoppingcart/create_paypal_payment/',
-        "CLIENT_ID": '',
-        "CLIENT_SECRET": '',
-        "PROFILE_ID": '',
+        "CLIENT_ID": 'Adz-F7RxcMb08SvvL1Aq3kLA_4CFymCPva3AcvGvAkTNOdo-z7MdC_0-Fjw4Kkf0FdTTQ21aKmBEB4DO',
+        "CLIENT_SECRET": 'EA1OTT729MVVY7kUsfffazlH-H-fN2y8gG8xUL-xEtLKhytW8AJ7aZb3SFEubvvqyKPZ4aq2fOFmHm_p',
+        "PROFILE_ID": 'edx',
     }
 }
 
