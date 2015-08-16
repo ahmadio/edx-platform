@@ -688,3 +688,16 @@ CREDIT_HELP_LINK_URL = ENV_TOKENS.get('CREDIT_HELP_LINK_URL', CREDIT_HELP_LINK_U
 #### JWT configuration ####
 JWT_ISSUER = ENV_TOKENS.get('JWT_ISSUER', JWT_ISSUER)
 JWT_EXPIRATION = ENV_TOKENS.get('JWT_EXPIRATION', JWT_EXPIRATION)
+
+
+########################### VERIFIED CERTIFICATES #################################
+
+# CC_PROCESSOR_NAME = 'Paypal'
+# CC_PROCESSOR = {
+#     'Paypal': {
+#         "PURCHASE_ENDPOINT": '/shoppingcart/create_paypal_payment/',
+#         "CLIENT_ID": 'Adz-F7RxcMb08SvvL1Aq3kLA_4CFymCPva3AcvGvAkTNOdo-z7MdC_0-Fjw4Kkf0FdTTQ21aKmBEB4DO',
+#         "CLIENT_SECRET": 'EA1OTT729MVVY7kUsfffazlH-H-fN2y8gG8xUL-xEtLKhytW8AJ7aZb3SFEubvvqyKPZ4aq2fOFmHm_p',
+#         "PROFILE_ID": 'edx',
+#     }
+# }
