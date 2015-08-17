@@ -394,7 +394,9 @@ FEATURES = {
     },
 
     # Course discovery feature
-    'ENABLE_COURSE_DISCOVERY': False,
+    'ENABLE_COURSE_DISCOVERY': True,
+    
+    'COURSES_ARE_BROWSEABLE': True,
 
     # Software secure fake page feature flag
     'ENABLE_SOFTWARE_SECURE_FAKE': False,
