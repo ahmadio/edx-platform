@@ -362,7 +362,7 @@ FEATURES = {
     'ENABLE_COURSEWARE_SEARCH': True,
 
     # Dashboard search feature
-    'ENABLE_DASHBOARD_SEARCH': True,
+    'ENABLE_DASHBOARD_SEARCH': False,
 
     # log all information from cybersource callbacks
     'LOG_POSTPAY_CALLBACKS': True,
