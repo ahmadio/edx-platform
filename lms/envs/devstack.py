@@ -90,8 +90,9 @@ CC_PROCESSOR_NAME = 'Paypal'
 CC_PROCESSOR = {
     'Paypal': {
         "PURCHASE_ENDPOINT": '/shoppingcart/create_paypal_payment/',
-        "CLIENT_ID": 'Adz-F7RxcMb08SvvL1Aq3kLA_4CFymCPva3AcvGvAkTNOdo-z7MdC_0-Fjw4Kkf0FdTTQ21aKmBEB4DO',
-        "CLIENT_SECRET": 'EA1OTT729MVVY7kUsfffazlH-H-fN2y8gG8xUL-xEtLKhytW8AJ7aZb3SFEubvvqyKPZ4aq2fOFmHm_p',
+        "MODE": 'sandbox',
+        "CLIENT_ID": 'AZPWZneSbSDSWTNmGcwsYOJi150rwK8KeKS3RCYyV1O-Wy3J5kLbgHtLk7SFOKsaCmsxFOCSVNFFWl5h',
+        "CLIENT_SECRET": 'EDt2pNXtobQbgvNxJXMI5UVAHenx8TdilkaV1ZNUxfSECwGpY8W7H2NeUKy4YpZBUdRwsZwKqLaJvLkN',
         "PROFILE_ID": 'edx',
     }
 }

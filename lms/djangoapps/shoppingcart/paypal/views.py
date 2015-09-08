@@ -42,7 +42,7 @@ def create_paypal_payment(request):
   # print 'total cost decimal : ' , cart.total_cost
 
 	paypalrestsdk.configure({
-	  'mode': 'sandbox',
+	  'mode': get_processor_config().get('MODE', 'sandbox'),
 	  'client_id': get_processor_config().get('CLIENT_ID', ''),
 	  'client_secret': get_processor_config().get('CLIENT_SECRET', '')
 	})

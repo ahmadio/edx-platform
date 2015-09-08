@@ -349,7 +349,7 @@ def _payment_accepted(payment_id, payer_id, token, request):
     pp = pprint.PrettyPrinter(indent=4)
 
     paypalrestsdk.configure({
-      'mode': 'sandbox',
+      'mode': get_processor_config().get('MODE', 'sandbox'),
       'client_id': get_processor_config().get('CLIENT_ID', ''),
       'client_secret': get_processor_config().get('CLIENT_SECRET', '')
     })
