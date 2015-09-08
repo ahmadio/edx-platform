@@ -420,6 +420,10 @@ FEATURES = {
     'ENABLE_DISABLING_XBLOCK_TYPES': True,
 }
 
+################################ COURSE CREATIONS RIGHTS #########################
+FEATURES['DISABLE_COURSE_CREATION'] = True
+
+
 # Ignore static asset files on import which match this pattern
 ASSET_IGNORE_REGEX = r"(^\._.*$)|(^\.DS_Store$)|(^.*~$)"
 
@@ -2064,7 +2068,7 @@ VERIFY_STUDENT = {
 }
 
 ### This enables the Metrics tab for the Instructor dashboard ###########
-FEATURES['CLASS_DASHBOARD'] = False
+FEATURES['CLASS_DASHBOARD'] = True
 if FEATURES.get('CLASS_DASHBOARD'):
     INSTALLED_APPS += ('class_dashboard',)
 
