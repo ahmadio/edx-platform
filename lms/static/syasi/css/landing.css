@@ -55,7 +55,7 @@ table {
 }
 .upper-part {
     width: 100%;
-    background: url("/static/syasi/images/cover-home.jpg") no-repeat center center;
+    background: url("../images/home-cover.jpg") no-repeat center center;
     background-size: cover;
     padding-bottom: 80px;
 }
