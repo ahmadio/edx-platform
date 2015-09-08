@@ -1069,7 +1069,7 @@ JASMINE_TEST_DIRECTORY = PROJECT_ROOT + '/static/coffee'
 # (such as marketing and the blog) via the branding API.
 
 # URL for OpenEdX displayed in the footer
-FOOTER_OPENEDX_URL = "http://open.edx.org"
+FOOTER_OPENEDX_URL = "http://syasi.org"
 
 # URL for the OpenEdX logo image
 # We use logo images served from files.edx.org so we can (roughly) track
@@ -1078,11 +1078,11 @@ FOOTER_OPENEDX_URL = "http://open.edx.org"
 # * https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png
 # * https://files.edx.org/openedx-logos/edx-openedx-logo-tag-light.png"
 # * https://files.edx.org/openedx-logos/edx-openedx-logo-tag-dark.png
-FOOTER_OPENEDX_LOGO_IMAGE = "https://files.edx.org/openedx-logos/edx-openedx-logo-tag.png"
+FOOTER_OPENEDX_LOGO_IMAGE = ""
 
 # This is just a placeholder image.
 # Site operators can customize this with their organization's image.
-FOOTER_ORGANIZATION_IMAGE = "images/default-theme/logo.png"
+FOOTER_ORGANIZATION_IMAGE = "images/default-theme/syasi-logo.png"
 
 # These are referred to both by the Django asset pipeline
 # AND by the branding footer API, which needs to decide which

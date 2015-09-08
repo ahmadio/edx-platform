@@ -70,6 +70,8 @@ from branding import api as branding_api
     <%static:js group='main_vendor'/>
   % endif
 
+  <link href="${static.url('syasi/css/landing.css')}" rel="stylesheet" type="text/css">
+
   <script>
     window.baseUrl = "${settings.STATIC_URL}";
     (function (require) {
@@ -134,12 +136,93 @@ from branding import api as branding_api
 % endif
     <a class="nav-skip" href="<%block name="nav_skip">#content</%block>">${_("Skip to main content")}</a>
 
-    % if not disable_header:
-        <%include file="${header_file}" />
-    % endif
-
     <div class="content-wrapper" id="content">
-      ${self.body()}
+      
+      <section>
+        <header class="header-container">
+            <div class="header-inner clearfix">
+                <div class="logo">
+                    <a href="/"><img src="${static.url('images/default-theme/syasi-full-logo.png')}">
+                    </a>
+                </div>
+                <nav class="header-horizontal-menu">
+                    <ul>
+                        <li><a href="/about">عن سياسي</a>
+                        </li>
+                        <li><a href="/courses">المقررات</a>
+                        </li>
+                        <li><a href="/staff">هيئة التدريس</a>
+                        </li>
+                        <li><a href="/academic-system">نظام الدراسة</a>
+                        </li>
+                        <li><a href="/contact">تواصل معنا</a>
+                        </li>
+                        <li><a href="#payments-methods-modal" class="show-payment-methods" rel="leanModal">وسائل الدفع</a>
+                        </li>
+                        <li><a href="/register">التسجيل</a>
+                        </li>
+                        <li><a href="/login">دخول</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <header class="upper-part">
+          <section class="big-branding container">
+              <div class="messages-cards">
+                  <div>
+                      <h1>مرحباً بكم في الموقع الرسمي لمعهد سياسي</h1></div>
+                  <div>
+                      <h1>أول معهد تدريب سياسي إلكتروني في العالم العربي</h1></div>
+                  <div>
+                      <h1>هدفنا تقديم الدعم الأكاديمي و التدريب المهاري لكل الراغبين في المشاركة السياسية الإحترافية</h1></div>
+              </div>
+          </section>
+          <div class="join-cta">
+              <a class="register" href="${reverse('register_user')}">انضم الأن</a>
+          </div>
+        </header>
+
+        <div class="lower-part">
+          <section id="vision" class="branding-section vision">
+              <div class="video-player container clearfix">
+                  <iframe width="600" height="450" frameborder="0" allowfullscreen="1" src="https://www.youtube.com/embed/WGlS5oamhcI?theme=light&showinfo=0&color=white&rel=0&enablejsapi=1&origin=http%3A%2F%2Flocalhost%3A8000"></iframe>
+                  <h2>نطمح إلى الوصول إلى جيل من الشباب القادر على ممارسة السياسة بحرفية و وعي</h2>
+              </div>
+              <div class="news-scroller container">
+                  <div>
+                      <h1>يهنئ معهد سياسي طلاب دفعة يناير 2015 على اجتيازهم المقررات الدراسية بنجاح</h1>
+                  </div>
+                  <div>
+                      <h1>سوف يتم فتح باب التقديم للدفعة الخامسة (سبتمبر 2015 ) في  الأسبوع الأول من أغسطس إن شاء الله</h1>
+                  </div>
+              </div>
+          </section>
+        </div>
+        <section class="courses-container">
+          <section class="highlighted-courses">
+            % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
+              <section class="courses">
+                  <ul class="courses-listing course-cards clearfix">
+                  ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
+                  %for course in courses[:settings.HOMEPAGE_COURSE_MAX]:
+                    <li class="courses-listing-item card">
+                      <%include file="course.html" args="course=course" />
+                    </li>
+                  %endfor
+                  </ul>
+              </section>
+              ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
+              % if settings.HOMEPAGE_COURSE_MAX and len(courses) > settings.HOMEPAGE_COURSE_MAX:
+                <div class="courses-more">
+                  <a class="courses-more-cta" href="${marketing_link('COURSES')}" > ${_("View all Courses")} </a>
+                </div>
+              % endif
+            % endif
+          </section>
+        </section>
+      </section>
+
       <%block name="bodyextra"/>
     </div>
 

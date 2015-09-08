@@ -84,7 +84,7 @@ $course-search-input-height: ($button-size);
         padding-bottom: ($baseline);
 
         h1 {
-          @include text-align(left);
+          text-align: center;
           margin-bottom: 0;
           text-shadow: 0 1px rgba(255,255,255, 0.6);
           text-transform: none;
