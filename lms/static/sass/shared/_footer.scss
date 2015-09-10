@@ -105,6 +105,10 @@
       a {
         display: inline-block;
 
+        img {
+          height: 60px;
+        }
+
         &:hover {
           border-bottom: 0;
         }
