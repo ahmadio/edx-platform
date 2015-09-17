@@ -18,7 +18,7 @@ html{
 }
 
 body {
-  background: #E9EAED;
+  background: $body-bg;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -120,7 +120,7 @@ a:focus {
 .content-wrapper {
   width: flex-grid(12);
   margin: 0 auto;
-  background: #E9EAED;
+  background: $content-wrapper-bg;
   padding-bottom: ($baseline*2);
 
   @media print {
@@ -370,5 +370,4 @@ mark {
     height: auto;
   }
 }
-
 
