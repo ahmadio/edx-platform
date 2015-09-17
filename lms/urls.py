@@ -172,6 +172,10 @@ if not settings.FEATURES["USE_CUSTOM_THEME"]:
     urlpatterns += (
         url(r'^blog$', 'static_template_view.views.render',
             {'template': 'blog.html'}, name="blog"),
+        url(r'^syasi-staff$', 'static_template_view.views.render',
+            {'template': 'syasi-staff.html'}, name="syasi-staff"),
+        url(r'^academic-system$', 'static_template_view.views.render',
+            {'template': 'academic-system.html'}, name="academic-system"),
         url(r'^contact$', 'static_template_view.views.render',
             {'template': 'contact.html'}, name="contact"),
         url(r'^donate$', 'static_template_view.views.render',

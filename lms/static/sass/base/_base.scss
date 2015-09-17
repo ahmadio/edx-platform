@@ -18,7 +18,7 @@ html{
 }
 
 body {
-  background: $body-bg;
+  background: #E9EAED;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -120,7 +120,7 @@ a:focus {
 .content-wrapper {
   width: flex-grid(12);
   margin: 0 auto;
-  background: $content-wrapper-bg;
+  background: #E9EAED;
   padding-bottom: ($baseline*2);
 
   @media print {
@@ -136,6 +136,15 @@ a:focus {
   max-width: grid-width(12);
   min-width: 760px;
   width: flex-grid(12);
+
+  &.about {
+    text-align: right !important;
+    direction: rtl;
+
+    .title {
+      border-bottom: 1px solid #c8c8c8;
+    }
+  }
 }
 
 span.edx {
@@ -361,3 +370,5 @@ mark {
     height: auto;
   }
 }
+
+
