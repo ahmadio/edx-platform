@@ -1,4 +1,5 @@
 ## coding=utf-8
+<%page cached="False"/>
 <%namespace name='static' file='static_content.html'/>
 <%!
 from django.core.urlresolvers import reverse
@@ -71,6 +72,7 @@ from branding import api as branding_api
   % endif
 
   <link href="${static.url('syasi/css/landing.css')}" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.css"/>
 
   <script>
     window.baseUrl = "${settings.STATIC_URL}";
@@ -169,11 +171,14 @@ from branding import api as branding_api
           <section class="big-branding container">
               <div class="messages-cards">
                   <div>
-                      <h1>مرحباً بكم في الموقع الرسمي لمعهد سياسي</h1></div>
+                      <h1>مرحباً بكم في الموقع الرسمي لمعهد سياسي</h1>
+                  </div>
                   <div>
-                      <h1>أول معهد تدريب سياسي إلكتروني في العالم العربي</h1></div>
+                      <h1>أول معهد تدريب سياسي إلكتروني في العالم العربي</h1>
+                  </div>
                   <div>
-                      <h1>هدفنا تقديم الدعم الأكاديمي و التدريب المهاري لكل الراغبين في المشاركة السياسية الإحترافية</h1></div>
+                      <h1>هدفنا تقديم الدعم الأكاديمي و التدريب المهاري لكل الراغبين في المشاركة السياسية الإحترافية</h1>
+                  </div>
               </div>
           </section>
           <div class="join-cta">
@@ -191,6 +196,7 @@ from branding import api as branding_api
                   <div>
                       <h1>تم فتح باب التسجيل للدفعة الخامسة لمعهد سياسي - أكتوبر 2015</h1>
                   </div>
+
               </div>
           </section>
         </div>
@@ -245,6 +251,20 @@ from branding import api as branding_api
 
   <%block name="js_extra"/>
   <script type="text/javascript" src="${static.url('js/vendor/noreferrer.js')}" charset="utf-8"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.7/slick.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.messages-cards').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 6000,
+        vertical: true,
+        cssEase:'linear',
+        arrows: false
+      });
+    });
+  </script>
 </body>
 </html>
 
