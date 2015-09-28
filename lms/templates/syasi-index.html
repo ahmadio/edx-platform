@@ -194,9 +194,14 @@ from branding import api as branding_api
               </div>
               <div class="news-scroller container">
                   <div>
-                      <h1>تم فتح باب التسجيل للدفعة الخامسة لمعهد سياسي - أكتوبر 2015</h1>
+                      <h1>تم فتح باب التقديم للدفعة الخامسة لمعهد سياسي (أكتوبر 2015)</h1>
                   </div>
-
+                  <div>
+                      <h1>سوف يتم غلق باب التقديم للدفعة الجديدة يوم الجمعة 6 نوفمبر 2015</h1>
+                  </div>
+                  <div>
+                      <h1>تبدأ الدراسة في هذا الفصل يوم السبت 31 أكتوبر 2015 ولمدة ثمانية أسابيع</h1>
+                  </div>
               </div>
           </section>
         </div>
@@ -255,6 +260,16 @@ from branding import api as branding_api
   <script>
     $(document).ready(function(){
       $('.messages-cards').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 6000,
+        vertical: true,
+        cssEase:'linear',
+        arrows: false
+      });
+
+      $('.news-scroller ').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
