@@ -30,6 +30,17 @@ def create_paypal_payment(request):
 
 	cart = Order.get_cart_for_user(request.user)
 
+	paypal_items = [{
+        "name": "Course registration",
+        "sku": "Course",
+        "price": int(item.unit_cost), # used integer as Decimal object is not serializesed using paypalrestsdk
+        "currency": "USD",
+        "quantity": item.qty} 
+        for item in cart.orderitem_set.all().select_subclasses()]
+
+
+
+
 	# print 'direct floated : ',	 float(cart.total_cost)
 	# print 'floated 2f : ', float("{0:.2f}".format(cart.total_cost))
 	# print 'total_cost decimal : ', cart.total_cost
@@ -72,12 +83,8 @@ def create_paypal_payment(request):
     
         # ItemList
         "item_list": {
-            "items": [{
-                "name": "Course registration",
-                "sku": "Course",
-                "price": int(cart.total_cost), # used integer as Decimal object is not serializesed using paypalrestsdk
-                "currency": "USD",
-                "quantity": cart.orderitem_set.all().select_subclasses().count()}]},
+            "items": paypal_items
+                },
 
         # Amount
         # Let's you specify a payment amount.
